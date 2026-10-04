@@ -30,6 +30,234 @@
         href="../css/responsive.css"
         >
 
+        <style>
+            /* CONTACT — choix du motif et formulaire progressif */
+            .efs-contact-page .efs-contact-type-grid {
+                display: grid;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 14px;
+            }
+
+            .efs-contact-page .efs-contact-type-card {
+                display: flex;
+                min-height: 150px;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+                border: 1px solid var(--efs-border-soft);
+                background: linear-gradient(145deg, rgba(255, 255, 255, 0.025), transparent 75%);
+                color: var(--ink);
+                text-decoration: none;
+                transition: border-color 450ms ease, background 450ms ease, transform 450ms ease;
+            }
+
+            .efs-contact-page .efs-contact-type-card:hover,
+            .efs-contact-page .efs-contact-type-card:focus-visible,
+            .efs-contact-page .efs-contact-type-card[aria-current="true"] {
+                border-color: var(--efs-gold-soft);
+                background: rgba(255, 255, 255, 0.045);
+                transform: translateY(-3px);
+            }
+
+            .efs-contact-page .efs-contact-type-card:focus-visible {
+                outline: 2px solid var(--efs-gold-light);
+                outline-offset: 3px;
+            }
+
+            .efs-contact-page .efs-contact-type-index {
+                margin-bottom: 20px;
+                color: var(--efs-gold);
+                font-size: 0.66rem;
+                font-weight: 500;
+                letter-spacing: 0.14em;
+            }
+
+            .efs-contact-page .efs-contact-type-card strong {
+                font-family: var(--efs-font-sans);
+                font-size: 1rem;
+                font-weight: 700;
+                line-height: 1.4;
+            }
+
+            .efs-contact-page .efs-contact-type-card span:last-child {
+                margin-top: 8px;
+                color: var(--efs-white-muted);
+                font-size: 0.78rem;
+                line-height: 1.55;
+            }
+
+            .efs-contact-page .efs-contact-form {
+                max-width: none;
+                margin-top: 34px;
+                padding: clamp(20px, 4vw, 42px);
+                border: 1px solid var(--efs-border-soft);
+                background: rgba(255, 255, 255, 0.018);
+            }
+
+            .efs-contact-page .efs-contact-form-grid {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 18px;
+            }
+
+            .efs-contact-page .efs-contact-form label {
+                min-width: 0;
+            }
+
+            .efs-contact-page .efs-contact-form [hidden] {
+                display: none !important;
+            }
+
+            .efs-contact-page .efs-contact-domain {
+                max-width: 780px;
+                margin-top: 0;
+                animation: efs-contact-enter 500ms ease both;
+            }
+
+            .efs-contact-page .efs-contact-specific {
+                display: grid;
+                gap: 18px;
+                animation: efs-contact-enter 500ms ease both;
+            }
+
+            .efs-contact-page .efs-contact-specific-grid {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 18px;
+            }
+
+            .efs-contact-page .efs-contact-specific-grid > label:only-child,
+            .efs-contact-page .efs-contact-specific-grid > label.efs-contact-wide {
+                grid-column: 1 / -1;
+            }
+
+            .efs-contact-page .efs-contact-consent {
+                display: flex !important;
+                grid-template-columns: none;
+                align-items: flex-start;
+                gap: 12px !important;
+                max-width: 780px;
+                color: var(--efs-white-soft) !important;
+                font-size: 0.78rem !important;
+                font-weight: 400 !important;
+                letter-spacing: 0 !important;
+                line-height: 1.65;
+                text-transform: none !important;
+            }
+
+            .efs-contact-page .efs-contact-consent input {
+                width: 18px;
+                min-width: 18px;
+                height: 18px;
+                margin: 2px 0 0;
+                accent-color: var(--efs-red-bright);
+            }
+
+            .efs-contact-page .efs-contact-consent a {
+                color: var(--efs-gold-light);
+                text-underline-offset: 3px;
+            }
+
+            .efs-contact-page .efs-contact-confirmation {
+                max-width: 860px;
+                margin-top: 34px;
+                padding: clamp(24px, 5vw, 54px);
+                border: 1px solid var(--efs-gold-soft);
+                background: linear-gradient(145deg, rgba(200, 164, 93, 0.06), rgba(255, 255, 255, 0.012) 55%);
+                animation: efs-contact-enter 550ms ease both;
+            }
+
+            .efs-contact-page .efs-contact-confirmation h3 {
+                margin: 0;
+                color: var(--efs-white);
+                font-family: var(--efs-font-sans);
+                font-size: clamp(1.8rem, 4vw, 3rem);
+                font-weight: 700;
+                line-height: 1.1;
+            }
+
+            .efs-contact-page .efs-contact-confirmation > p {
+                max-width: 580px;
+                margin: 14px 0 28px;
+                color: var(--efs-white-soft);
+                line-height: 1.75;
+            }
+
+            .efs-contact-page .efs-contact-summary {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 18px 28px;
+                margin: 0 0 30px;
+            }
+
+            .efs-contact-page .efs-contact-summary div {
+                min-width: 0;
+                padding-top: 12px;
+                border-top: 1px solid var(--efs-border-soft);
+            }
+
+            .efs-contact-page .efs-contact-summary dt {
+                color: var(--efs-gold);
+                font-size: 0.64rem;
+                font-weight: 500;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+            }
+
+            .efs-contact-page .efs-contact-summary dd {
+                margin: 7px 0 0;
+                color: var(--efs-white);
+                line-height: 1.6;
+                overflow-wrap: anywhere;
+                white-space: pre-wrap;
+            }
+
+            @keyframes efs-contact-enter {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @media (max-width: 850px) {
+                .efs-contact-page .efs-contact-type-grid {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+            }
+
+            @media (max-width: 600px) {
+                .efs-contact-page .efs-contact-form-grid,
+                .efs-contact-page .efs-contact-specific-grid,
+                .efs-contact-page .efs-contact-summary {
+                    grid-template-columns: 1fr;
+                }
+
+                .efs-contact-page .efs-contact-type-card {
+                    min-height: 135px;
+                    padding: 16px;
+                }
+
+                .efs-contact-page .efs-contact-form {
+                    padding: 18px;
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .efs-contact-page .efs-contact-type-card,
+                .efs-contact-page .efs-contact-domain,
+                .efs-contact-page .efs-contact-specific,
+                .efs-contact-page .efs-contact-confirmation {
+                    animation: none;
+                    transition: none;
+                }
+            }
+        </style>
+
     </head>
 
     <body>
@@ -150,7 +378,9 @@
     </div>
 </div>
 
-        <!-- Section : Entrer en contact -->
+        <main class="efs-contact-page">
+
+        <!-- CONTACT HERO -->
 
         <section class="hero">
 
@@ -186,11 +416,8 @@
 
                     <div class="hero-actions">
 
-                        <a
-                            class="btn fill"
-                            href="#contact"
-                            >
-                            Trouver mon point de départ
+                        <a class="btn fill" href="#contact-type">
+                            Choisir un motif
                         </a>
 
                         <a
@@ -208,7 +435,7 @@
 
         </section>
 
-        <!-- Section : 01 / premier contact -->
+        <!-- CONTACT TYPE -->
 
         <section>
 
@@ -218,20 +445,16 @@
 
                     <div>
 
-                        <p class="eyebrow">
-                            01 / PREMIER CONTACT
-                        </p>
+                        <p class="eyebrow">01 / MOTIF DE CONTACT</p>
 
                         <h2>
-                            Par où 
-                            <br>
-                            commencer ?
+                            Quel est<br>votre motif ?
                         </h2>
 
                     </div>
 
                     <p class="mute">
-                        Il n'est pas nécessaire d'avoir un projet parfaitement défini pour nous contacter. Une idée, une envie ou une intention peuvent suffire pour commencer à échanger.
+                        Choisissez le motif qui se rapproche le plus de votre demande. Vous pourrez le modifier dans le formulaire.
                     </p>
 
                 </div>
@@ -240,128 +463,61 @@
 
         </section>
 
-        <!-- Section : 01 / projet -->
+        <!-- CONTACT TYPE CHOICES -->
 
-        <section id="contact">
+        <section id="contact-type">
 
             <div class="wrap">
 
-                <div class="grid">
+                <div class="efs-contact-type-grid">
 
-                    <article class="card">
+                    <a class="efs-contact-type-card" href="#contact-form-section" data-efs-contact-choice="projet">
+                        <span class="efs-contact-type-index">01</span>
+                        <strong data-efs-contact-type-label>Projet créatif</strong>
+                        <span data-efs-contact-type-description>Présenter une idée ou un projet à développer.</span>
+                    </a>
 
-                        <p class="eyebrow">
-                            01 / PROJET
-                        </p>
+                    <a class="efs-contact-type-card" href="#contact-form-section" data-efs-contact-choice="prestation">
+                        <span class="efs-contact-type-index">02</span>
+                        <strong data-efs-contact-type-label>Prestation</strong>
+                        <span data-efs-contact-type-description>Décrire un besoin créatif ou de production.</span>
+                    </a>
 
-                        <h3>
-                            J'ai une idée.
-                        </h3>
+                    <a class="efs-contact-type-card" href="#contact-form-section" data-efs-contact-choice="collaboration">
+                        <span class="efs-contact-type-index">03</span>
+                        <strong data-efs-contact-type-label>Collaboration</strong>
+                        <span data-efs-contact-type-description>Proposer de contribuer à un projet du studio.</span>
+                    </a>
 
-                        <p class="mute">
-                            Un film, une création audiovisuelle, une photographie ou un projet original que vous souhaitez développer.
-                        </p>
+                    <a class="efs-contact-type-card" href="#contact-form-section" data-efs-contact-choice="candidature">
+                        <span class="efs-contact-type-index">04</span>
+                        <strong data-efs-contact-type-label>Candidature</strong>
+                        <span data-efs-contact-type-description>Présenter un profil et ses domaines de compétence.</span>
+                    </a>
 
-                        <a
-                            class="text-link"
-                            href="#projet"
-                            >
-                            Présenter mon projet →
-                        </a>
+                    <a class="efs-contact-type-card" href="#contact-form-section" data-efs-contact-choice="partenariat">
+                        <span class="efs-contact-type-index">05</span>
+                        <strong data-efs-contact-type-label>Partenariat</strong>
+                        <span data-efs-contact-type-description>Échanger au nom d’une structure intéressée.</span>
+                    </a>
 
-                    </article>
+                    <a class="efs-contact-type-card" href="#contact-form-section" data-efs-contact-choice="presse">
+                        <span class="efs-contact-type-index">06</span>
+                        <strong data-efs-contact-type-label>Presse / Média</strong>
+                        <span data-efs-contact-type-description>Adresser une demande journalistique ou média.</span>
+                    </a>
 
-                    <article class="card">
+                    <a class="efs-contact-type-card" href="#contact-form-section" data-efs-contact-choice="question">
+                        <span class="efs-contact-type-index">07</span>
+                        <strong data-efs-contact-type-label>Question générale</strong>
+                        <span data-efs-contact-type-description>Poser une question au studio.</span>
+                    </a>
 
-                        <p class="eyebrow">
-                            02 / PRESTATION
-                        </p>
-
-                        <h3>
-                            Je cherche un studio.
-                        </h3>
-
-                        <p class="mute">
-                            Vous recherchez une équipe pour donner une forme visuelle et créative à un besoin précis.
-                        </p>
-
-                        <a
-                            class="text-link"
-                            href="mailto:extrafocusstudio0@gmail.com?subject=Demande%20de%20prestation"
-                            >
-                            Parler d'une prestation →
-                        </a>
-
-                    </article>
-
-                    <article class="card">
-
-                        <p class="eyebrow">
-                            03 / COLLABORATION
-                        </p>
-
-                        <h3>
-                            Je veux créer avec vous.
-                        </h3>
-
-                        <p class="mute">
-                            Artiste, technicien, créateur, association ou entreprise : vous souhaitez construire quelque chose avec nous.
-                        </p>
-
-                        <a
-                            class="text-link"
-                            href="mailto:extrafocusstudio0@gmail.com?subject=Proposition%20de%20collaboration"
-                            >
-                            Proposer une collaboration →
-                        </a>
-
-                    </article>
-
-                    <article class="card">
-
-                        <p class="eyebrow">
-                            04 / PARTENARIAT
-                        </p>
-
-                        <h3>
-                            Je veux construire avec vous.
-                        </h3>
-
-                        <p class="mute">
-                            Vous représentez une marque, une entreprise ou une structure et souhaitez imaginer une collaboration durable.
-                        </p>
-
-                        <a
-                            class="text-link"
-                            href="mailto:extrafocusstudio0@gmail.com?subject=Proposition%20de%20partenariat"
-                            >
-                            Échanger sur un partenariat →
-                        </a>
-
-                    </article>
-
-                    <article class="card">
-
-                        <p class="eyebrow">
-                            05 / ÉCHANGE
-                        </p>
-
-                        <h3>
-                            Je veux simplement échanger.
-                        </h3>
-
-                        <p class="mute">
-                            Une question, une idée, une remarque ou simplement l'envie de découvrir davantage Extra Focus Studio.
-                        </p>
-
-                        <a
-                            class="text-link"
-                            href="mailto:extrafocusstudio0@gmail.com?subject=Prise%20de%20contact"
-                            >
-                            Écrire au studio →
-                        </a>
-
-                    </article>
+                    <a class="efs-contact-type-card" href="#contact-form-section" data-efs-contact-choice="autre">
+                        <span class="efs-contact-type-index">08</span>
+                        <strong data-efs-contact-type-label>Autre</strong>
+                        <span data-efs-contact-type-description>Préciser toute autre demande.</span>
+                    </a>
 
                 </div>
 
@@ -369,9 +525,9 @@
 
         </section>
 
-        <!-- Section : 02 / projet -->
+        <!-- CONTACT FORM -->
 
-        <section id="projet">
+        <section id="contact-form-section">
 
             <div class="wrap">
 
@@ -380,171 +536,80 @@
                     <div>
 
                         <p class="eyebrow">
-                            02 / PROJET
+                            02 / VOTRE DEMANDE
                         </p>
 
                         <h2>
-                            Donnez-nous 
-                            <br>
-                            un point de départ.
+                            Quelques mots<br>pour commencer.
                         </h2>
 
                     </div>
 
                     <p class="mute">
-                        Vous n'avez pas besoin d'avoir toutes les réponses. Décrivez simplement votre idée, son intention et ce que vous aimeriez en faire.
+                        Les informations marquées comme obligatoires nous aideront à comprendre votre demande. Aucun message ni fichier n’est transmis à ce stade.
                     </p>
 
                 </div>
 
-                <!-- Formulaire de contact -->
-
-                <form id="f">
-
-                    <div class="grid">
-
-                        <label>
-                            Nom et prénom
-                            <input
-                            type="text"
-                            name="nom"
-                            required
-                            autocomplete="name"
-                            placeholder="Votre nom"
-                            >
-
-                        </label>
-
-                        <label>
-                            Adresse email
-                            <input
-                            type="email"
-                            name="email"
-                            required
-                            autocomplete="email"
-                            placeholder="vous@exemple.fr"
-                            >
-
-                        </label>
-
-                        <label>
-                            Téléphone 
-                            <span class="mute">
-                                (facultatif)
-                            </span>
-
-                            <input
-                            type="tel"
-                            name="tel"
-                            autocomplete="tel"
-                            placeholder="+33 6 00 00 00 00"
-                            >
-
-                        </label>
-
-                        <label>
-                            Type de projet
-                            <select name="type">
-
-                                <option value="Film">
-                                    Film / audiovisuel
-                                </option>
-
-                                <option value="Photographie">
-                                    Photographie
-                                </option>
-
-                                <!-- PUBLICITÉ -->
-                                <option value="Publicité">
-                                    Publicité / communication de marque
-                                </option>
-
-                                <option value="Direction artistique">
-                                    Direction artistique
-                                </option>
-
-                                <option value="Projet créatif">
-                                    Projet créatif
-                                </option>
-
-                                <option value="Prestation">
-                                    Prestation
-                                </option>
-
-                                <option value="Collaboration">
-                                    Collaboration
-                                </option>
-
-                                <option value="Partenariat">
-                                    Partenariat
-                                </option>
-
-                                <option value="Candidature">
-                                    Candidature
-                                </option>
-
-                                <option value="Presse">
-                                    Presse
-                                </option>
-
-                                <option value="Autre">
-                                    Autre
-                                </option>
-
+                <form class="efs-contact-form" id="efs-contact-form">
+                    <div class="efs-contact-form-grid">
+                        <label for="efs-contact-type">
+                            Motif de contact
+                            <select id="efs-contact-type" name="type" required>
+                                <option value="">Choisissez un motif</option>
                             </select>
-
                         </label>
-
                     </div>
 
-                    <label>
-                        Nom ou objet du projet
-                        <input
-                        type="text"
-                        name="objet"
-                        placeholder="Le nom de votre projet"
-                        >
-
-                    </label>
-
-                    <label>
-                        Parlez-nous de votre idée
-                        <textarea
-                        name="msg"
-                        rows="8"
-                        required
-                        placeholder="Quelle est votre idée ? Que souhaitez-vous créer ? Quelle intention souhaitez-vous transmettre ?"
-                        >
-                        </textarea>
-
-                    </label>
-
-                    <div class="form-submit">
-
-                        <button
-                            class="btn fill"
-                            type="submit"
-                            >
-                            Préparer mon message
-                        </button>
-
-                        <p class="mute">
-                            Votre messagerie s'ouvrira avec les informations que vous venez de renseigner.
-                        </p>
-
+                    <div class="efs-contact-form-grid" id="efs-contact-common" hidden>
+                        <label for="efs-contact-last-name">
+                            Nom
+                            <input id="efs-contact-last-name" type="text" name="nom" autocomplete="family-name" required>
+                        </label>
+                        <label for="efs-contact-first-name">
+                            Prénom
+                            <input id="efs-contact-first-name" type="text" name="prenom" autocomplete="given-name" required>
+                        </label>
+                        <label for="efs-contact-email">
+                            Email
+                            <input id="efs-contact-email" type="email" name="email" autocomplete="email" required>
+                        </label>
+                        <label for="efs-contact-phone">
+                            Téléphone <span class="mute">(facultatif)</span>
+                            <input id="efs-contact-phone" type="tel" name="telephone" autocomplete="tel">
+                        </label>
                     </div>
 
-                    <p
-                        class="ok"
-                        id="ok"
-                        role="status"
-                        aria-live="polite"
-                        hidden
-                        >
-                        Votre demande a été préparée.
-                    </p>
+                    <div id="efs-contact-domain-wrap" class="efs-contact-domain" hidden>
+                        <label for="efs-contact-domain">
+                            Domaine concerné
+                            <select id="efs-contact-domain" name="domaine">
+                                <option value="">Choisissez un domaine</option>
+                            </select>
+                        </label>
+                    </div>
 
+                    <div id="efs-contact-specific" class="efs-contact-specific" hidden></div>
+
+                    <label class="efs-contact-consent" id="efs-contact-consent-wrap" for="efs-contact-consent" hidden>
+                        <input id="efs-contact-consent" type="checkbox" name="consentement" required>
+                        <span>J’accepte que les informations saisies soient utilisées pour traiter ma demande, conformément à la <a href="../legal/confidentialite.html">politique de confidentialité</a>.</span>
+                    </label>
+
+                    <div class="form-submit" id="efs-contact-submit-wrap" hidden>
+                        <button class="btn fill" type="submit">Transmettre au studio ↗</button>
+                        <p class="mute">Cette page ne transmet pas réellement votre demande. La confirmation affichée sert à vérifier les informations avant la future mise en place d’un système d’envoi.</p>
+                    </div>
                 </form>
+
+                <!-- CONTACT CONFIRMATION -->
+                <section class="efs-contact-confirmation" id="efs-contact-confirmation" aria-labelledby="efs-contact-confirmation-title" aria-live="polite" tabindex="-1" hidden>
+                    <span class="eyebrow">TRANSMISSION REÇUE</span>
+                    <h3 id="efs-contact-confirmation-title">TRANSMISSION REÇUE</h3>
+                    <p>Votre demande a été préparée dans cette page. Elle n’a pas été envoyée au studio.</p>
+                    <dl class="efs-contact-summary" id="efs-contact-summary"></dl>
+                    <a class="btn" href="../index.html">Retour à l’accueil</a>
+                </section>
 
             </div>
 
@@ -732,7 +797,7 @@
 
         </section>
 
-        <!-- Section : Extra focus studio -->
+        <!-- CONTACT FINAL -->
 
         <section class="contact-section">
 
@@ -762,6 +827,8 @@
             </div>
 
         </section>
+
+        </main>
 
         <!-- Pied de page -->
 
@@ -815,6 +882,9 @@
 </footer>
 
         <script src="../js/script.js">
+        </script>
+
+        <script src="../js/forms.js">
         </script>
 
     </body>
