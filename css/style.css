@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
+
 /* Variables */
 
 :root {
@@ -76,19 +78,8 @@
     --radius-small: var(--efs-radius-md);
     --max-width: 1280px;
 
-    --efs-font-sans:
-        Inter,
-        "Helvetica Neue",
-        Helvetica,
-        Arial,
-        sans-serif;
-    --efs-font-editorial:
-        "Iowan Old Style",
-        "Baskerville",
-        "Palatino Linotype",
-        "Book Antiqua",
-        Georgia,
-        serif;
+    --efs-font-sans: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+    --efs-font-editorial: var(--efs-font-sans);
     --efs-font-script:
         "Segoe Script",
         "Snell Roundhand",
@@ -3316,6 +3307,64 @@ main > section::before {
         transform: none;
         transition: none;
     }
+}
+
+/* =========================================================
+   TYPOGRAPHIE — MONTSERRAT ET ACCENTS CALLIGRAPHIQUES
+   ========================================================= */
+
+body {
+    font-family: var(--efs-font-sans);
+    font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+.content-card h3,
+.card-info h3 {
+    font-family: var(--efs-font-sans);
+    font-weight: 700;
+}
+
+p,
+li,
+blockquote,
+.hero-text,
+.intro-content p,
+.card-info p,
+.content-card p,
+.faq-list details p {
+    font-family: var(--efs-font-sans);
+    font-weight: 400;
+}
+
+.efs-nav-links a,
+.efs-menu-link,
+.efs-nav-trigger,
+.btn,
+.text-link,
+.efs-footer-contact-button,
+button,
+label,
+.efs-menu-heading,
+.efs-menu-footer,
+.eyebrow,
+.card-info span,
+.sw strong,
+.efs-footer-heading {
+    font-family: var(--efs-font-sans);
+    font-weight: 500;
+}
+
+.efs-menu-label {
+    font-family: var(--efs-font-sans);
+    font-weight: 500;
+}
+
+.efs-script {
+    font-family: var(--efs-font-script);
+    font-weight: 400;
 }
 
 /* Responsive — mobile */
