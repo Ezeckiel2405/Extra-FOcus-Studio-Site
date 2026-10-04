@@ -18,6 +18,190 @@
 
         <link rel="stylesheet" href="../css/responsive.css">
 
+        <style>
+            /* ACTUALITÉS — journal et évolution */
+            .efs-journal-page {
+                --efs-journal-line: rgba(255, 255, 255, 0.09);
+                --efs-journal-muted: rgba(255, 255, 255, 0.62);
+            }
+
+            .efs-journal-hero {
+                min-height: min(760px, calc(84svh - 76px));
+            }
+
+            .efs-journal-hero .wrap,
+            .efs-journal-section .wrap,
+            .efs-journal-cta .wrap {
+                width: min(100%, 1180px);
+            }
+
+            .efs-journal-hero h1 {
+                max-width: 10ch;
+            }
+
+            .efs-journal-hero .hero-text {
+                max-width: 600px;
+            }
+
+            .efs-journal-section {
+                background: transparent;
+            }
+
+            .efs-journal-section--timeline {
+                background:
+                    radial-gradient(ellipse at 80% 12%, rgba(200, 164, 93, 0.025), transparent 42%),
+                    var(--efs-vantablack);
+            }
+
+            .efs-journal-heading {
+                display: grid;
+                grid-template-columns: minmax(0, 0.9fr) minmax(250px, 0.65fr);
+                gap: clamp(28px, 6vw, 84px);
+                align-items: end;
+                margin-bottom: clamp(40px, 6vw, 76px);
+                padding-bottom: clamp(22px, 3vw, 34px);
+                border-bottom: 1px solid var(--efs-journal-line);
+            }
+
+            .efs-journal-heading h2 {
+                max-width: 13ch;
+                font-family: var(--efs-font-sans);
+                font-size: clamp(2.4rem, 5vw, 4.8rem);
+                font-weight: 700;
+                line-height: 1.03;
+            }
+
+            .efs-journal-heading > p {
+                max-width: 440px;
+                margin: 0;
+                color: var(--efs-journal-muted);
+                line-height: 1.8;
+            }
+
+            .efs-journal-timeline {
+                display: grid;
+                grid-template-columns: 110px minmax(0, 1fr);
+                max-width: 980px;
+                margin-left: auto;
+                border-top: 1px solid var(--efs-journal-line);
+            }
+
+            .efs-journal-timeline-item {
+                display: grid;
+                grid-column: 1 / -1;
+                grid-template-columns: 110px 28px minmax(0, 1fr);
+                gap: 20px;
+                padding: 27px 0;
+                border-bottom: 1px solid var(--efs-journal-line);
+            }
+
+            .efs-journal-year {
+                padding-top: 4px;
+                color: var(--efs-gold);
+                font-size: 0.7rem;
+                font-weight: 500;
+                letter-spacing: 0.14em;
+            }
+
+            .efs-journal-marker {
+                position: relative;
+                display: flex;
+                justify-content: center;
+            }
+
+            .efs-journal-marker::before {
+                width: 7px;
+                height: 7px;
+                margin-top: 8px;
+                background: var(--efs-red-bright);
+                border: 2px solid var(--efs-black);
+                border-radius: 50%;
+                box-shadow: 0 0 0 1px rgba(192, 0, 37, 0.35);
+                content: "";
+            }
+
+            .efs-journal-timeline-item h3 {
+                margin: 0;
+                color: var(--efs-white);
+                font-family: var(--efs-font-sans);
+                font-size: clamp(1.15rem, 1.8vw, 1.55rem);
+                font-weight: 700;
+                line-height: 1.3;
+            }
+
+            .efs-journal-timeline-item p {
+                max-width: 620px;
+                margin: 9px 0 0;
+                color: var(--efs-journal-muted);
+                font-size: 0.92rem;
+                line-height: 1.75;
+            }
+
+            .efs-journal-updates {
+                display: grid;
+                grid-template-columns: minmax(0, 0.8fr) minmax(260px, 1.2fr);
+                gap: clamp(28px, 7vw, 90px);
+                align-items: center;
+                padding: clamp(25px, 4vw, 48px) 0;
+                border-top: 1px solid var(--efs-journal-line);
+                border-bottom: 1px solid var(--efs-journal-line);
+            }
+
+            .efs-journal-updates h3 {
+                margin: 0;
+                color: var(--efs-white);
+                font-family: var(--efs-font-sans);
+                font-size: clamp(1.5rem, 3vw, 2.3rem);
+                font-weight: 700;
+            }
+
+            .efs-journal-updates p {
+                margin: 0;
+                color: var(--efs-journal-muted);
+                line-height: 1.8;
+            }
+
+            .efs-journal-cta {
+                background: var(--efs-black);
+            }
+
+            .efs-journal-cta h2 {
+                max-width: 13ch;
+                font-family: var(--efs-font-sans);
+                font-size: clamp(2.6rem, 6vw, 5.3rem);
+                font-weight: 700;
+                line-height: 1;
+            }
+
+            .efs-journal-cta p {
+                max-width: 540px;
+                margin: 23px 0 28px;
+                color: var(--efs-journal-muted);
+                line-height: 1.8;
+            }
+
+            @media (max-width: 760px) {
+                .efs-journal-heading,
+                .efs-journal-updates {
+                    grid-template-columns: 1fr;
+                    gap: 22px;
+                    align-items: start;
+                }
+            }
+
+            @media (max-width: 600px) {
+                .efs-journal-hero {
+                    min-height: min(650px, calc(80svh - 64px));
+                }
+
+                .efs-journal-timeline-item {
+                    grid-template-columns: 55px 18px minmax(0, 1fr);
+                    gap: 12px;
+                    padding: 22px 0;
+                }
+            }
+        </style>
+
     </head>
 
     <body>
@@ -139,75 +323,97 @@
     </div>
 </div>
 
-        <main>
+        <main class="efs-journal-page">
 
-            <!-- Section : EXTRA FOCUS STUDIO / ACTUALITÉS -->
-            <section class="hero">
+            <!-- HERO -->
+            <section class="hero efs-journal-hero">
                 <div class="wrap">
-                    <span class="eyebrow">
-                        EXTRA FOCUS STUDIO / ACTUALITÉS
-                    </span>
-                    <h1>
-                        Le studio 
-                        <br>
-                        en mouvement.
-                    </h1>
+                    <span class="eyebrow">EXTRA FOCUS STUDIO / JOURNAL</span>
+                    <h1>Le studio<br>en mouvement.</h1>
                     <p class="hero-text">
-                        Les nouvelles, annonces et avancées des projets du studio seront rassemblées ici.
+                        Un journal pour suivre la construction d’Extra Focus Studio, le développement de ses activités et les étapes de ses premières productions.
                     </p>
                 </div>
             </section>
 
-            <!-- Section : JOURNAL DU STUDIO -->
-            <section>
+            <!-- PRÉSENTATION DU JOURNAL -->
+            <section class="efs-journal-section">
                 <div class="wrap">
-
-                    <div class="section-heading">
+                    <div class="efs-journal-heading">
                         <div>
-                            <span class="eyebrow">
-                                JOURNAL DU STUDIO
-                            </span>
-                            <h2>
-                                Ce qui se prépare.
-                            </h2>
+                            <span class="eyebrow">LE JOURNAL DU STUDIO</span>
+                            <h2>Une aventure qui se construit.</h2>
                         </div>
                         <p>
-                            Un espace pour partager les étapes importantes des productions et les nouvelles d'Extra Focus Studio.
+                            Cet espace accueillera les nouvelles vérifiées et partageables du studio. Aucun article ni annonce n’est publié pour le moment.
+                        </p>
+                    </div>
+                    <div class="efs-journal-updates">
+                        <h3>Actualités à venir</h3>
+                        <p>
+                            Les prochaines publications pourront présenter une étape du studio ou une nouvelle de projet, lorsque des informations pourront être communiquées.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LE STUDIO SE CONSTRUIT -->
+            <section class="efs-journal-section efs-journal-section--timeline">
+                <div class="wrap">
+                    <div class="efs-journal-heading">
+                        <div>
+                            <span class="eyebrow">2026 / EN CONSTRUCTION</span>
+                            <h2>Le studio se construit.</h2>
+                        </div>
+                        <p>
+                            Les grands axes qui structurent le développement du studio, présentés comme des étapes générales et non comme des annonces datées.
                         </p>
                     </div>
 
-                    <div class="content-grid">
-
-                        <article class="content-card">
-                            <span>
-                                À VENIR
-                            </span>
-                            <h3>
-                                Une première actualité
-                            </h3>
-                            <p>
-                                Ajoutez ici une annonce, sa date, une image et les informations utiles pour la communauté.
-                            </p>
+                    <div class="efs-journal-timeline">
+                        <article class="efs-journal-timeline-item">
+                            <span class="efs-journal-year">2026</span>
+                            <span class="efs-journal-marker" aria-hidden="true"></span>
+                            <div>
+                                <h3>Création et structuration du studio</h3>
+                                <p>Poser les bases de la maison de production et organiser son fonctionnement.</p>
+                            </div>
                         </article>
-
-                        <article class="content-card">
-                            <span>
-                                PROJETS
-                            </span>
-                            <h3>
-                                Suivre les productions
-                            </h3>
-                            <p>
-                                Présentez l'avancement d'un projet uniquement lorsque les informations peuvent être rendues publiques.
-                            </p>
+                        <article class="efs-journal-timeline-item">
+                            <span class="efs-journal-year">2026</span>
+                            <span class="efs-journal-marker" aria-hidden="true"></span>
+                            <div>
+                                <h3>Développement de l’équipe</h3>
+                                <p>Réunir des compétences complémentaires autour des activités et des projets du studio.</p>
+                            </div>
                         </article>
-
+                        <article class="efs-journal-timeline-item">
+                            <span class="efs-journal-year">2026</span>
+                            <span class="efs-journal-marker" aria-hidden="true"></span>
+                            <div>
+                                <h3>Développement des activités</h3>
+                                <p>Faire évoluer les domaines du studio : cinéma, audiovisuel, photographie, jeux vidéo, publicité et création.</p>
+                            </div>
+                        </article>
+                        <article class="efs-journal-timeline-item">
+                            <span class="efs-journal-year">2026</span>
+                            <span class="efs-journal-marker" aria-hidden="true"></span>
+                            <div>
+                                <h3>Développement des premières productions</h3>
+                                <p>Faire avancer les projets du studio selon leur état de développement et les informations pouvant être partagées.</p>
+                            </div>
+                        </article>
                     </div>
+                </div>
+            </section>
 
-                    <p class="status-note">
-                        Aucune actualité n'est publiée pour le moment.
-                    </p>
-
+            <!-- CONTACT -->
+            <section class="efs-journal-cta">
+                <div class="wrap">
+                    <span class="eyebrow">RESTER EN LIEN</span>
+                    <h2>Une question sur le studio&nbsp;?</h2>
+                    <p>Pour toute demande ou prise de contact, écrivez-nous directement.</p>
+                    <a class="btn fill" href="contact.html">Contacter le studio</a>
                 </div>
             </section>
 
@@ -223,7 +429,7 @@
                     <span class="efs-footer-brand-mark">EXTRA FOCUS</span>
                     <span class="efs-footer-brand-name">STUDIO</span>
                 </a>
-                <p class="efs-footer-description">Studio créatif · Cinéma · Audiovisuel · Photographie · Jeux vidéo</p>
+                <p class="efs-footer-description">Studio créatif · Cinéma · Audiovisuel · Photographie · Jeux vidéo · Publicité</p>
             </section>
 
             <!-- FOOTER CONTACT -->
@@ -268,4 +474,3 @@
     </body>
 
 </html>
-

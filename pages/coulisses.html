@@ -18,6 +18,240 @@
 
         <link rel="stylesheet" href="../css/responsive.css">
 
+        <style>
+            /* COULISSES — récit humain et préparation des projets */
+            .efs-behind-page {
+                --efs-behind-line: rgba(255, 255, 255, 0.09);
+                --efs-behind-muted: rgba(255, 255, 255, 0.64);
+            }
+
+            .efs-behind-hero {
+                min-height: min(760px, calc(86svh - 76px));
+            }
+
+            .efs-behind-hero .wrap,
+            .efs-behind-section .wrap,
+            .efs-behind-cta .wrap {
+                width: min(100%, 1180px);
+            }
+
+            .efs-behind-hero h1 {
+                max-width: 10ch;
+            }
+
+            .efs-behind-hero .hero-text {
+                max-width: 580px;
+            }
+
+            .efs-behind-section {
+                background: transparent;
+            }
+
+            .efs-behind-intro {
+                display: grid;
+                grid-template-columns: minmax(0, 0.95fr) minmax(260px, 0.75fr);
+                gap: clamp(30px, 8vw, 110px);
+                align-items: end;
+                padding-bottom: clamp(34px, 5vw, 60px);
+                border-bottom: 1px solid var(--efs-behind-line);
+            }
+
+            .efs-behind-intro h2 {
+                max-width: 12ch;
+                margin: 0;
+                font-family: var(--efs-font-sans);
+                font-size: clamp(2.5rem, 5vw, 4.8rem);
+                font-weight: 700;
+                line-height: 1.02;
+            }
+
+            .efs-behind-intro p {
+                max-width: 490px;
+                margin: 0;
+                color: var(--efs-behind-muted);
+                line-height: 1.85;
+            }
+
+            .efs-behind-editorial {
+                display: grid;
+                grid-template-columns: minmax(200px, 0.55fr) minmax(0, 1.45fr);
+                gap: clamp(32px, 8vw, 110px);
+                align-items: start;
+            }
+
+            .efs-behind-side-note {
+                position: sticky;
+                top: 120px;
+                padding-top: 7px;
+                color: var(--efs-gold);
+                font-size: 0.68rem;
+                font-weight: 500;
+                letter-spacing: 0.14em;
+                line-height: 1.8;
+                text-transform: uppercase;
+            }
+
+            .efs-behind-chapters {
+                border-top: 1px solid var(--efs-behind-line);
+            }
+
+            .efs-behind-chapter {
+                display: grid;
+                grid-template-columns: 52px minmax(0, 1fr);
+                gap: 18px;
+                padding: clamp(23px, 4vw, 38px) 0;
+                border-bottom: 1px solid var(--efs-behind-line);
+            }
+
+            .efs-behind-chapter-number {
+                padding-top: 5px;
+                color: var(--efs-red-bright);
+                font-size: 0.7rem;
+                font-weight: 500;
+                letter-spacing: 0.12em;
+            }
+
+            .efs-behind-chapter h3 {
+                margin: 0;
+                color: var(--efs-white);
+                font-family: var(--efs-font-sans);
+                font-size: clamp(1.35rem, 2.4vw, 2rem);
+                font-weight: 700;
+                line-height: 1.25;
+            }
+
+            .efs-behind-chapter p {
+                max-width: 640px;
+                margin: 12px 0 0;
+                color: var(--efs-behind-muted);
+                font-size: 0.94rem;
+                line-height: 1.8;
+            }
+
+            .efs-behind-media {
+                display: grid;
+                grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.8fr);
+                gap: clamp(16px, 3vw, 34px);
+                align-items: end;
+                margin-top: clamp(38px, 7vw, 84px);
+            }
+
+            .efs-behind-media-slot {
+                display: flex;
+                min-height: 320px;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 20px;
+                border: 1px solid var(--efs-behind-line);
+                background:
+                    linear-gradient(145deg, rgba(255, 255, 255, 0.018), transparent 56%),
+                    rgba(255, 255, 255, 0.006);
+            }
+
+            .efs-behind-media-slot--portrait {
+                min-height: 245px;
+            }
+
+            .efs-behind-media-label,
+            .efs-behind-media-caption {
+                color: var(--efs-behind-muted);
+                font-size: 0.64rem;
+                font-weight: 500;
+                letter-spacing: 0.11em;
+                line-height: 1.7;
+                text-transform: uppercase;
+            }
+
+            .efs-behind-media-caption {
+                max-width: 25ch;
+                color: rgba(255, 255, 255, 0.42);
+            }
+
+            .efs-behind-build {
+                display: grid;
+                grid-template-columns: minmax(0, 0.85fr) minmax(250px, 1.15fr);
+                gap: clamp(28px, 8vw, 100px);
+                align-items: start;
+                padding-top: 30px;
+                border-top: 1px solid var(--efs-behind-line);
+            }
+
+            .efs-behind-build h2 {
+                max-width: 11ch;
+                margin: 0;
+                font-family: var(--efs-font-sans);
+                font-size: clamp(2.3rem, 4.5vw, 4.1rem);
+                font-weight: 700;
+                line-height: 1.04;
+            }
+
+            .efs-behind-build p {
+                max-width: 570px;
+                margin: 0;
+                color: var(--efs-behind-muted);
+                line-height: 1.85;
+            }
+
+            .efs-behind-cta {
+                background:
+                    radial-gradient(ellipse at 90% 20%, rgba(200, 164, 93, 0.025), transparent 42%),
+                    var(--efs-black);
+            }
+
+            .efs-behind-cta h2 {
+                max-width: 12ch;
+                font-family: var(--efs-font-sans);
+                font-size: clamp(2.7rem, 6vw, 5.2rem);
+                font-weight: 700;
+                line-height: 1;
+            }
+
+            .efs-behind-cta p {
+                max-width: 530px;
+                margin: 24px 0 28px;
+                color: var(--efs-behind-muted);
+                line-height: 1.8;
+            }
+
+            .efs-behind-cta-actions {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            @media (max-width: 760px) {
+                .efs-behind-intro,
+                .efs-behind-editorial,
+                .efs-behind-build {
+                    grid-template-columns: 1fr;
+                    gap: 24px;
+                }
+
+                .efs-behind-side-note {
+                    position: static;
+                }
+
+                .efs-behind-media-slot {
+                    min-height: 250px;
+                }
+            }
+
+            @media (max-width: 560px) {
+                .efs-behind-hero {
+                    min-height: min(650px, calc(82svh - 64px));
+                }
+
+                .efs-behind-media {
+                    grid-template-columns: 1fr;
+                }
+
+                .efs-behind-media-slot,
+                .efs-behind-media-slot--portrait {
+                    min-height: 210px;
+                }
+            }
+        </style>
+
     </head>
 
     <body>
@@ -139,75 +373,121 @@
     </div>
 </div>
 
-        <main>
+        <main class="efs-behind-page">
 
-            <!-- Section : EXTRA FOCUS STUDIO / COULISSES -->
-            <section class="hero">
+            <!-- HERO -->
+            <section class="hero efs-behind-hero">
                 <div class="wrap">
-                    <span class="eyebrow">
-                        EXTRA FOCUS STUDIO / COULISSES
-                    </span>
-                    <h1>
-                        Avant que 
-                        <br>
-                        l'image existe.
-                    </h1>
+                    <span class="eyebrow">EXTRA FOCUS STUDIO / COULISSES</span>
+                    <h1>Avant que<br>l’image existe.</h1>
                     <p class="hero-text">
-                        Préparation, recherches et moments de création : entrez dans les coulisses des projets.
+                        Un regard sur les étapes de réflexion, de préparation et de création qui précèdent les images.
                     </p>
                 </div>
             </section>
 
-            <!-- Section : EN COURS DE CRÉATION -->
-            <section>
+            <!-- CRÉER COMMENCE AVANT LE TOURNAGE -->
+            <section class="efs-behind-section">
                 <div class="wrap">
-
-                    <div class="section-heading">
-                        <div>
-                            <span class="eyebrow">
-                                EN COURS DE CRÉATION
-                            </span>
-                            <h2>
-                                Les histoires derrière les images.
-                            </h2>
-                        </div>
+                    <div class="efs-behind-intro">
+                        <h2>Créer commence bien avant le tournage.</h2>
                         <p>
-                            Des récits, photos et vidéos pourront documenter la préparation et la fabrication des projets.
+                            Une idée prend forme à travers des choix, des échanges et une préparation attentive. Cet espace raconte ces démarches sans prétendre documenter des tournages ou des projets qui ne sont pas publiés.
                         </p>
                     </div>
+                </div>
+            </section>
 
-                    <div class="content-grid">
-
-                        <article class="content-card">
-                            <span>
-                                PRÉPARATION
-                            </span>
-                            <h3>
-                                Recherche & conception
-                            </h3>
-                            <p>
-                                Notes visuelles et étapes préparatoires à ajouter avec l'accord des équipes.
-                            </p>
+            <!-- LES ÉTAPES DE CRÉATION -->
+            <section class="efs-behind-section">
+                <div class="wrap efs-behind-editorial">
+                    <div class="efs-behind-side-note">DANS L’ATELIER<br>DE CRÉATION</div>
+                    <div class="efs-behind-chapters">
+                        <article class="efs-behind-chapter">
+                            <span class="efs-behind-chapter-number">01</span>
+                            <div>
+                                <h3>Développement des projets</h3>
+                                <p>Les intentions, les idées et les premières pistes se précisent avant qu’un projet soit prêt à être partagé.</p>
+                            </div>
                         </article>
-
-                        <article class="content-card">
-                            <span>
-                                FABRICATION
-                            </span>
-                            <h3>
-                                Sur le terrain
-                            </h3>
-                            <p>
-                                Images et récits de tournage à publier lorsqu'ils sont disponibles et autorisés.
-                            </p>
+                        <article class="efs-behind-chapter">
+                            <span class="efs-behind-chapter-number">02</span>
+                            <div>
+                                <h3>Direction artistique</h3>
+                                <p>Les choix d’univers, de ton et de langage visuel contribuent à donner une identité à chaque création.</p>
+                            </div>
                         </article>
-
+                        <article class="efs-behind-chapter">
+                            <span class="efs-behind-chapter-number">03</span>
+                            <div>
+                                <h3>Production et organisation</h3>
+                                <p>Préparer une production implique de structurer les étapes, les besoins et la coordination des compétences.</p>
+                            </div>
+                        </article>
+                        <article class="efs-behind-chapter">
+                            <span class="efs-behind-chapter-number">04</span>
+                            <div>
+                                <h3>Le travail des équipes</h3>
+                                <p>Les projets créatifs se construisent grâce aux regards et aux savoir-faire complémentaires des personnes qui y contribuent.</p>
+                            </div>
+                        </article>
+                        <article class="efs-behind-chapter">
+                            <span class="efs-behind-chapter-number">05</span>
+                            <div>
+                                <h3>Photographie et image</h3>
+                                <p>La recherche d’image participe à l’écriture visuelle, de la première intention aux choix de réalisation.</p>
+                            </div>
+                        </article>
+                        <article class="efs-behind-chapter">
+                            <span class="efs-behind-chapter-number">06</span>
+                            <div>
+                                <h3>Préparer les futures productions</h3>
+                                <p>La préparation aide à faire évoluer les projets et à envisager leurs besoins, sans préjuger de leur calendrier ni de leur réalisation.</p>
+                            </div>
+                        </article>
                     </div>
+                </div>
+            </section>
 
-                    <p class="status-note">
-                        Les contenus des coulisses seront ajoutés au fil des productions.
+            <!-- EMPLACEMENTS MÉDIAS À VENIR -->
+            <section class="efs-behind-section">
+                <div class="wrap">
+                    <div class="efs-behind-media" aria-label="Emplacements réservés à de futurs contenus visuels">
+                        <div class="efs-behind-media-slot">
+                            <span class="efs-behind-media-label">Emplacement réservé — photographie à venir</span>
+                            <span class="efs-behind-media-caption">Aucune image de coulisses publiée pour le moment</span>
+                        </div>
+                        <div class="efs-behind-media-slot efs-behind-media-slot--portrait">
+                            <span class="efs-behind-media-label">Emplacement réservé — vidéo / making-of à venir</span>
+                            <span class="efs-behind-media-caption">Aucun contenu vidéo publié pour le moment</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LE STUDIO SE CONSTRUIT EN DIRECT -->
+            <section class="efs-behind-section">
+                <div class="wrap efs-behind-build">
+                    <div>
+                        <span class="eyebrow">LE STUDIO SE CONSTRUIT EN DIRECT</span>
+                        <h2>Un regard au fil du temps.</h2>
+                    </div>
+                    <p>
+                        Les photos, vidéos et récits de fabrication trouveront leur place ici au fur et à mesure que des contenus pourront être partagés. Pour l’instant, cette page présente les axes de travail du studio, sans images de coulisses ni making-of.
                     </p>
+                </div>
+            </section>
 
+            <!-- COLLABORER / REJOINDRE -->
+            <section class="efs-behind-cta">
+                <div class="wrap">
+                    <span class="eyebrow">PRENDRE PART À LA CRÉATION</span>
+                    <h2>La suite s’écrit ensemble.</h2>
+                    <p>Pour proposer une collaboration ou présenter votre profil au studio, découvrez les démarches dédiées.</p>
+                    <div class="efs-behind-cta-actions">
+                        <a class="btn fill" href="collaborer.html">Collaborer avec nous</a>
+                        <a class="btn" href="rejoindre.html">Rejoindre le studio</a>
+                    </div>
                 </div>
             </section>
 
@@ -223,7 +503,7 @@
                     <span class="efs-footer-brand-mark">EXTRA FOCUS</span>
                     <span class="efs-footer-brand-name">STUDIO</span>
                 </a>
-                <p class="efs-footer-description">Studio créatif · Cinéma · Audiovisuel · Photographie · Jeux vidéo</p>
+                <p class="efs-footer-description">Studio créatif · Cinéma · Audiovisuel · Photographie · Jeux vidéo · Publicité</p>
             </section>
 
             <!-- FOOTER CONTACT -->
@@ -268,4 +548,3 @@
     </body>
 
 </html>
-

@@ -18,6 +18,244 @@
 
         <link rel="stylesheet" href="../css/responsive.css">
 
+        <style>
+            /* ÉQUIPE — composition éditoriale */
+            .efs-team-page {
+                --efs-team-line: rgba(255, 255, 255, 0.09);
+                --efs-team-muted: rgba(255, 255, 255, 0.62);
+            }
+
+            .efs-team-hero {
+                min-height: min(740px, calc(84svh - 76px));
+            }
+
+            .efs-team-hero .wrap,
+            .efs-team-section .wrap,
+            .efs-team-cta .wrap {
+                width: min(100%, 1220px);
+            }
+
+            .efs-team-hero h1 {
+                max-width: 11ch;
+            }
+
+            .efs-team-hero .hero-text {
+                max-width: 600px;
+            }
+
+            .efs-team-section {
+                background: transparent;
+            }
+
+            .efs-team-section:nth-of-type(even) {
+                background: rgba(255, 255, 255, 0.008);
+            }
+
+            .efs-team-heading {
+                display: grid;
+                grid-template-columns: minmax(0, 0.9fr) minmax(250px, 0.65fr);
+                align-items: end;
+                gap: clamp(26px, 6vw, 84px);
+                margin-bottom: clamp(38px, 6vw, 72px);
+                padding-bottom: clamp(22px, 3vw, 34px);
+                border-bottom: 1px solid var(--efs-team-line);
+            }
+
+            .efs-team-heading h2 {
+                max-width: 12ch;
+                font-family: var(--efs-font-sans);
+                font-size: clamp(2.3rem, 5vw, 4.7rem);
+                font-weight: 700;
+                line-height: 1.02;
+            }
+
+            .efs-team-heading > p {
+                max-width: 420px;
+                margin: 0;
+                color: var(--efs-team-muted);
+                line-height: 1.8;
+            }
+
+            .efs-team-index {
+                display: block;
+                margin-bottom: 17px;
+                color: var(--efs-gold);
+                font-size: 0.66rem;
+                font-weight: 500;
+                letter-spacing: 0.15em;
+            }
+
+            .efs-team-grid {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: clamp(28px, 4vw, 56px) clamp(18px, 2.5vw, 34px);
+            }
+
+            .efs-team-grid--direction {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: clamp(34px, 5vw, 68px) clamp(22px, 3.2vw, 44px);
+            }
+
+            .efs-team-person {
+                min-width: 0;
+            }
+
+            .efs-team-portrait {
+                position: relative;
+                display: grid;
+                aspect-ratio: 4 / 3;
+                place-items: center;
+                overflow: hidden;
+                background:
+                    radial-gradient(
+                        ellipse at 50% 100%,
+                        rgba(200, 164, 93, 0.055),
+                        transparent 54%
+                    ),
+                    linear-gradient(145deg, #090909, #030303 72%);
+                border: 1px solid var(--efs-team-line);
+            }
+
+            .efs-team-portrait::before,
+            .efs-team-portrait::after {
+                position: absolute;
+                content: "";
+                pointer-events: none;
+            }
+
+            .efs-team-portrait::before {
+                inset: 12px;
+                border: 1px solid rgba(255, 255, 255, 0.035);
+            }
+
+            .efs-team-portrait::after {
+                right: 12%;
+                bottom: -42%;
+                left: 12%;
+                height: 75%;
+                background: radial-gradient(
+                    ellipse,
+                    rgba(169, 0, 31, 0.055),
+                    transparent 70%
+                );
+            }
+
+            .efs-team-portrait-label {
+                position: relative;
+                z-index: 1;
+                color: rgba(255, 255, 255, 0.42);
+                font-size: 0.62rem;
+                font-weight: 500;
+                letter-spacing: 0.16em;
+                text-align: center;
+                text-transform: uppercase;
+            }
+
+            .efs-team-person-copy {
+                padding-top: 17px;
+            }
+
+            .efs-team-role {
+                display: block;
+                margin-bottom: 8px;
+                color: var(--efs-gold);
+                font-size: 0.62rem;
+                font-weight: 500;
+                letter-spacing: 0.13em;
+                line-height: 1.5;
+                text-transform: uppercase;
+            }
+
+            .efs-team-person h3 {
+                margin: 0;
+                color: var(--efs-white);
+                font-family: var(--efs-font-sans);
+                font-size: clamp(1.15rem, 1.8vw, 1.55rem);
+                font-weight: 700;
+                line-height: 1.25;
+                overflow-wrap: anywhere;
+            }
+
+            .efs-team-person--lead h3 {
+                font-size: clamp(1.45rem, 2.4vw, 2rem);
+            }
+
+            .efs-team-person-copy p {
+                margin: 9px 0 0;
+                color: var(--efs-team-muted);
+                font-size: 0.88rem;
+                line-height: 1.7;
+            }
+
+            .efs-team-cta {
+                background:
+                    radial-gradient(
+                        ellipse at 8% 78%,
+                        rgba(169, 0, 31, 0.045),
+                        transparent 46%
+                    ),
+                    var(--efs-black);
+            }
+
+            .efs-team-cta h2 {
+                max-width: 13ch;
+                font-family: var(--efs-font-sans);
+                font-size: clamp(2.6rem, 6vw, 5.5rem);
+                font-weight: 700;
+                line-height: 1;
+            }
+
+            .efs-team-cta p {
+                max-width: 550px;
+                margin: 24px 0 30px;
+                color: var(--efs-team-muted);
+                line-height: 1.8;
+            }
+
+            .efs-team-cta-actions {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            @media (max-width: 900px) {
+                .efs-team-grid {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+
+                .efs-team-heading {
+                    grid-template-columns: 1fr;
+                    gap: 22px;
+                    align-items: start;
+                }
+            }
+
+            @media (max-width: 600px) {
+                .efs-team-hero {
+                    min-height: min(660px, calc(80svh - 64px));
+                }
+
+                .efs-team-grid,
+                .efs-team-grid--direction {
+                    grid-template-columns: 1fr;
+                    gap: 30px;
+                }
+
+                .efs-team-portrait {
+                    aspect-ratio: 5 / 3;
+                }
+
+                .efs-team-cta-actions {
+                    flex-direction: column;
+                }
+
+                .efs-team-cta-actions .btn {
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+        </style>
+
     </head>
 
     <body>
@@ -139,82 +377,206 @@
     </div>
 </div>
 
-        <main>
+        <main class="efs-team-page">
 
-            <!-- Section : EXTRA FOCUS STUDIO / ÉQUIPE -->
-            <section class="hero">
+            <!-- HERO -->
+            <section class="hero efs-team-hero">
                 <div class="wrap">
-                    <span class="eyebrow">
-                        EXTRA FOCUS STUDIO / ÉQUIPE
-                    </span>
-                    <h1>
-                        Des regards 
-                        <br>
-                        qui se rencontrent.
-                    </h1>
+                    <span class="eyebrow">EXTRA FOCUS STUDIO / ÉQUIPE</span>
+                    <h1>Celles et ceux<br>qui font le studio.</h1>
                     <p class="hero-text">
-                        Un studio se construit grâce aux personnes qui imaginent, fabriquent et font vivre ses projets.
+                        Une maison de production se construit autour de regards, de métiers et de sensibilités complémentaires. Voici les personnes qui composent aujourd’hui Extra Focus Studio.
                     </p>
                 </div>
             </section>
 
-            <!-- Section : LES PERSONNES DU STUDIO -->
-            <section>
+            <!-- DIRECTION & PRODUCTION -->
+            <section class="efs-team-section">
                 <div class="wrap">
-
-                    <div class="section-heading">
+                    <div class="efs-team-heading">
                         <div>
-                            <span class="eyebrow">
-                                LES PERSONNES DU STUDIO
-                            </span>
-                            <h2>
-                                Une aventure collective.
-                            </h2>
+                            <span class="efs-team-index">01 / DIRECTION & PRODUCTION</span>
+                            <h2>La structure<br>du studio.</h2>
                         </div>
-                        <p>
-                            Cette page accueillera les portraits et les rôles des personnes qui contribuent aux créations du studio.
-                        </p>
+                        <p>Direction et production accompagnent le développement et l’organisation des projets.</p>
                     </div>
-
-                    <div class="content-grid">
-
-                        <article class="content-card">
-                            <span>
-                                DIRECTION
-                            </span>
-                            <h3>
-                                Présentation à venir
-                            </h3>
-                            <p>
-                                Nom, fonction, parcours et présentation de la direction du studio.
-                            </p>
+                    <div class="efs-team-grid efs-team-grid--direction">
+                        <article class="efs-team-person efs-team-person--lead">
+                            <div class="efs-team-portrait" aria-label="Portrait à venir">
+                                <span class="efs-team-portrait-label">Portrait à venir</span>
+                            </div>
+                            <div class="efs-team-person-copy">
+                                <span class="efs-team-role">Direction</span>
+                                <h3>Jean-Samuel Ladegaillerie</h3>
+                                <p>Directeur de la boîte de production</p>
+                            </div>
                         </article>
-
-                        <article class="content-card">
-                            <span>
-                                COLLABORATIONS
-                            </span>
-                            <h3>
-                                Les talents du projet
-                            </h3>
-                            <p>
-                                Les équipes et collaborateurs seront présentés au fil des productions.
-                            </p>
+                        <article class="efs-team-person efs-team-person--lead">
+                            <div class="efs-team-portrait" aria-label="Portrait à venir">
+                                <span class="efs-team-portrait-label">Portrait à venir</span>
+                            </div>
+                            <div class="efs-team-person-copy">
+                                <span class="efs-team-role">Développement & partenariats</span>
+                                <h3>Nicolas Sannier</h3>
+                                <p>Directeur du développement et des partenariats</p>
+                            </div>
                         </article>
-
+                        <article class="efs-team-person">
+                            <div class="efs-team-portrait" aria-label="Portrait à venir">
+                                <span class="efs-team-portrait-label">Portrait à venir</span>
+                            </div>
+                            <div class="efs-team-person-copy">
+                                <span class="efs-team-role">Production</span>
+                                <h3>Aliénore Camus</h3>
+                                <p>Chargée de production</p>
+                            </div>
+                        </article>
+                        <article class="efs-team-person">
+                            <div class="efs-team-portrait" aria-label="Portrait à venir">
+                                <span class="efs-team-portrait-label">Portrait à venir</span>
+                            </div>
+                            <div class="efs-team-person-copy">
+                                <span class="efs-team-role">Direction</span>
+                                <h3>Lou Marlier</h3>
+                                <p>Assistante de direction</p>
+                            </div>
+                        </article>
                     </div>
+                </div>
+            </section>
 
-                    <p class="status-note">
-                        <strong>
-                            Contenu à compléter :
-                        </strong>
-                         les noms, biographies, fonctions et autorisations de publication des portraits restent à renseigner.
+            <!-- RÉALISATION -->
+            <section class="efs-team-section">
+                <div class="wrap">
+                    <div class="efs-team-heading">
+                        <div>
+                            <span class="efs-team-index">02 / RÉALISATION</span>
+                            <h2>Le regard<br>du film.</h2>
+                        </div>
+                        <p>La réalisation porte une vision et guide la mise en forme du récit.</p>
+                    </div>
+                    <div class="efs-team-grid">
+                        <article class="efs-team-person">
+                            <div class="efs-team-portrait" aria-label="Portrait à venir">
+                                <span class="efs-team-portrait-label">Portrait à venir</span>
+                            </div>
+                            <div class="efs-team-person-copy">
+                                <span class="efs-team-role">Réalisation</span>
+                                <h3>Bastien Guillaumeau</h3>
+                                <p>Réalisateur</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- IMAGE / PHOTOGRAPHIE -->
+            <section class="efs-team-section">
+                <div class="wrap">
+                    <div class="efs-team-heading">
+                        <div>
+                            <span class="efs-team-index">03 / IMAGE</span>
+                            <h2>Photographie.</h2>
+                        </div>
+                        <p>Deux photographes contribuent au regard porté sur les images du studio.</p>
+                    </div>
+                    <div class="efs-team-grid">
+                        <article class="efs-team-person">
+                            <div class="efs-team-portrait" aria-label="Portrait à venir">
+                                <span class="efs-team-portrait-label">Portrait à venir</span>
+                            </div>
+                            <div class="efs-team-person-copy">
+                                <span class="efs-team-role">Photographie</span>
+                                <h3>Photographe — nom à venir</h3>
+                                <p>Photographe</p>
+                            </div>
+                        </article>
+                        <article class="efs-team-person">
+                            <div class="efs-team-portrait" aria-label="Portrait à venir">
+                                <span class="efs-team-portrait-label">Portrait à venir</span>
+                            </div>
+                            <div class="efs-team-person-copy">
+                                <span class="efs-team-role">Photographie</span>
+                                <h3>Photographe — nom à venir</h3>
+                                <p>Photographe</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- JURIDIQUE -->
+            <section class="efs-team-section">
+                <div class="wrap">
+                    <div class="efs-team-heading">
+                        <div>
+                            <span class="efs-team-index">04 / JURIDIQUE</span>
+                            <h2>Études de droit.</h2>
+                        </div>
+                        <p>Haby et Marie sont actuellement en études de droit.</p>
+                    </div>
+                    <div class="efs-team-grid">
+                        <article class="efs-team-person">
+                            <div class="efs-team-portrait" aria-label="Portrait à venir">
+                                <span class="efs-team-portrait-label">Portrait à venir</span>
+                            </div>
+                            <div class="efs-team-person-copy">
+                                <span class="efs-team-role">Juridique / Droit</span>
+                                <h3>Haby</h3>
+                                <p>Études de droit</p>
+                            </div>
+                        </article>
+                        <article class="efs-team-person">
+                            <div class="efs-team-portrait" aria-label="Portrait à venir">
+                                <span class="efs-team-portrait-label">Portrait à venir</span>
+                            </div>
+                            <div class="efs-team-person-copy">
+                                <span class="efs-team-role">Juridique / Droit</span>
+                                <h3>Marie</h3>
+                                <p>Études de droit</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RESSOURCES HUMAINES -->
+            <section class="efs-team-section">
+                <div class="wrap">
+                    <div class="efs-team-heading">
+                        <div>
+                            <span class="efs-team-index">05 / RESSOURCES HUMAINES</span>
+                            <h2>Faire grandir<br>le collectif.</h2>
+                        </div>
+                        <p>Les ressources humaines contribuent à la vie du collectif.</p>
+                    </div>
+                    <div class="efs-team-grid">
+                        <article class="efs-team-person">
+                            <div class="efs-team-portrait" aria-label="Portrait à venir">
+                                <span class="efs-team-portrait-label">Portrait à venir</span>
+                            </div>
+                            <div class="efs-team-person-copy">
+                                <span class="efs-team-role">Ressources humaines</span>
+                                <h3>Mael Bariller</h3>
+                                <p>Responsable RH</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- REJOINDRE / COLLABORER -->
+            <section class="efs-team-cta">
+                <div class="wrap">
+                    <span class="eyebrow">ET SI NOS REGARDS SE RENCONTRAIENT ?</span>
+                    <h2>Rejoindre ou collaborer avec le studio.</h2>
+                    <p>
+                        Découvrez les possibilités de rejoindre Extra Focus Studio ou proposez une collaboration autour de votre projet.
                     </p>
-
-                    <a class="btn" href="contact.html?type=Collaboration">
-                        Proposer une collaboration
-                    </a>
-
+                    <div class="efs-team-cta-actions">
+                        <a class="btn fill" href="rejoindre.html">Rejoindre le studio</a>
+                        <a class="btn" href="collaborer.html">Collaborer avec le studio</a>
+                    </div>
                 </div>
             </section>
 
@@ -230,7 +592,7 @@
                     <span class="efs-footer-brand-mark">EXTRA FOCUS</span>
                     <span class="efs-footer-brand-name">STUDIO</span>
                 </a>
-                <p class="efs-footer-description">Studio créatif · Cinéma · Audiovisuel · Photographie · Jeux vidéo</p>
+                <p class="efs-footer-description">Studio créatif · Cinéma · Audiovisuel · Photographie · Jeux vidéo · Publicité</p>
             </section>
 
             <!-- FOOTER CONTACT -->
@@ -275,4 +637,3 @@
     </body>
 
 </html>
-

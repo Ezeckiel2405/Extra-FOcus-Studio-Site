@@ -18,6 +18,373 @@
 
         <link rel="stylesheet" href="../css/responsive.css">
 
+        <style>
+            /* FILIÈRES — présentation éditoriale des domaines du studio */
+            .efs-activities-page {
+                --efs-activities-line: rgba(255, 255, 255, 0.1);
+                --efs-activities-muted: rgba(255, 255, 255, 0.66);
+            }
+
+            .efs-activities-page .wrap {
+                width: min(100%, 1180px);
+            }
+
+            .efs-activities-hero {
+                min-height: min(760px, calc(86svh - 76px));
+            }
+
+            .efs-activities-hero h1 {
+                max-width: 11ch;
+            }
+
+            .efs-activities-hero .hero-text {
+                max-width: 620px;
+            }
+
+            .efs-activities-intro {
+                display: grid;
+                grid-template-columns: minmax(0, 0.9fr) minmax(250px, 0.7fr);
+                gap: clamp(28px, 7vw, 94px);
+                align-items: end;
+                margin-bottom: clamp(44px, 7vw, 86px);
+                padding-bottom: 30px;
+                border-bottom: 1px solid var(--efs-activities-line);
+            }
+
+            .efs-activities-intro h2 {
+                max-width: 13ch;
+                margin: 0;
+                font-family: var(--efs-font-sans);
+                font-size: clamp(2.4rem, 5vw, 4.7rem);
+                font-weight: 700;
+                line-height: 1.04;
+            }
+
+            .efs-activities-intro p {
+                max-width: 460px;
+                margin: 0;
+                color: var(--efs-activities-muted);
+                line-height: 1.85;
+            }
+
+            .efs-activities-list {
+                border-top: 1px solid var(--efs-activities-line);
+            }
+
+            .efs-activity {
+                position: relative;
+                display: grid;
+                grid-template-columns: minmax(115px, 0.32fr) minmax(0, 1fr) minmax(120px, 0.38fr);
+                gap: clamp(18px, 4vw, 52px);
+                align-items: center;
+                min-height: 205px;
+                padding: clamp(28px, 4.5vw, 52px) 0;
+                overflow: hidden;
+                border-bottom: 1px solid var(--efs-activities-line);
+                isolation: isolate;
+            }
+
+            .efs-activity::before {
+                position: absolute;
+                z-index: -1;
+                inset: 0;
+                background: linear-gradient(90deg, rgba(255, 255, 255, 0.025), transparent 76%);
+                opacity: 0;
+                transition: opacity 650ms ease;
+                content: "";
+            }
+
+            .efs-activity:hover::before {
+                opacity: 1;
+            }
+
+            .efs-activity-number {
+                color: rgba(255, 255, 255, 0.12);
+                font-family: var(--efs-font-sans);
+                font-size: clamp(4.6rem, 9vw, 8.6rem);
+                font-weight: 700;
+                letter-spacing: -0.09em;
+                line-height: 0.85;
+                transition: color 650ms ease, transform 650ms ease;
+            }
+
+            .efs-activity:hover .efs-activity-number {
+                color: rgba(192, 0, 37, 0.38);
+                transform: translateX(5px);
+            }
+
+            .efs-activity-copy {
+                min-width: 0;
+            }
+
+            .efs-activity-kicker {
+                display: block;
+                margin-bottom: 13px;
+                color: var(--efs-gold);
+                font-size: 0.66rem;
+                font-weight: 500;
+                letter-spacing: 0.15em;
+                line-height: 1.6;
+            }
+
+            .efs-activity h3 {
+                margin: 0;
+                color: var(--efs-white);
+                font-family: var(--efs-font-sans);
+                font-size: clamp(1.55rem, 3vw, 2.8rem);
+                font-weight: 700;
+                line-height: 1.13;
+                overflow-wrap: anywhere;
+            }
+
+            .efs-activity p {
+                max-width: 600px;
+                margin: 14px 0 0;
+                color: var(--efs-activities-muted);
+                font-size: 0.95rem;
+                line-height: 1.8;
+            }
+
+            .efs-activity-mark {
+                justify-self: end;
+                width: clamp(68px, 10vw, 130px);
+                aspect-ratio: 1;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 50%;
+                position: relative;
+                opacity: 0.7;
+                transition: border-color 650ms ease, transform 900ms ease, opacity 650ms ease;
+            }
+
+            .efs-activity-mark::before,
+            .efs-activity-mark::after {
+                position: absolute;
+                inset: 17%;
+                border: 1px solid rgba(200, 164, 93, 0.22);
+                border-radius: 50%;
+                content: "";
+            }
+
+            .efs-activity-mark::after {
+                inset: 34%;
+                border-color: rgba(255, 255, 255, 0.15);
+            }
+
+            .efs-activity:hover .efs-activity-mark {
+                border-color: rgba(192, 0, 37, 0.5);
+                opacity: 1;
+                transform: rotate(45deg);
+            }
+
+            .efs-activities-note {
+                margin: 25px 0 0;
+                color: rgba(255, 255, 255, 0.48);
+                font-size: 0.78rem;
+                line-height: 1.8;
+            }
+
+            .efs-activities-complement {
+                background:
+                    radial-gradient(ellipse at 8% 78%, rgba(192, 0, 37, 0.045), transparent 45%),
+                    var(--efs-vantablack);
+            }
+
+            .efs-complement-heading {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) minmax(240px, 0.7fr);
+                gap: clamp(28px, 7vw, 92px);
+                align-items: end;
+                margin-bottom: clamp(34px, 6vw, 70px);
+            }
+
+            .efs-complement-heading h2 {
+                max-width: 12ch;
+                margin: 0;
+                font-family: var(--efs-font-sans);
+                font-size: clamp(2.5rem, 5.4vw, 5rem);
+                font-weight: 700;
+                line-height: 1.02;
+            }
+
+            .efs-complement-heading p {
+                max-width: 470px;
+                margin: 0;
+                color: var(--efs-activities-muted);
+                line-height: 1.85;
+            }
+
+            .efs-complement-strip {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px 24px;
+                padding: 22px 0;
+                border-top: 1px solid var(--efs-activities-line);
+                border-bottom: 1px solid var(--efs-activities-line);
+            }
+
+            .efs-complement-strip span {
+                color: var(--efs-white-soft);
+                font-size: clamp(0.75rem, 1.1vw, 0.9rem);
+                font-weight: 500;
+                letter-spacing: 0.04em;
+            }
+
+            .efs-complement-strip span + span::before {
+                margin-right: 24px;
+                color: var(--efs-red-bright);
+                content: "·";
+            }
+
+            .efs-complement-disclaimer {
+                max-width: 730px;
+                margin: 22px 0 0;
+                color: rgba(255, 255, 255, 0.48);
+                font-size: 0.82rem;
+                line-height: 1.8;
+            }
+
+            .efs-creation-method {
+                display: grid;
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+                margin-top: clamp(36px, 6vw, 70px);
+                border-top: 1px solid var(--efs-activities-line);
+            }
+
+            .efs-creation-step {
+                min-width: 0;
+                padding: 21px clamp(12px, 2vw, 24px) 0 0;
+            }
+
+            .efs-creation-step + .efs-creation-step {
+                padding-left: clamp(12px, 2vw, 24px);
+                border-left: 1px solid var(--efs-activities-line);
+            }
+
+            .efs-creation-step span {
+                color: var(--efs-gold);
+                font-size: 0.65rem;
+                font-weight: 500;
+                letter-spacing: 0.14em;
+            }
+
+            .efs-creation-step h3 {
+                margin: 19px 0 0;
+                color: var(--efs-white);
+                font-family: var(--efs-font-sans);
+                font-size: clamp(1rem, 1.7vw, 1.45rem);
+                font-weight: 700;
+            }
+
+            .efs-activities-cta {
+                background: var(--efs-black);
+            }
+
+            .efs-activities-cta h2 {
+                max-width: 10ch;
+                margin: 0;
+                font-family: var(--efs-font-sans);
+                font-size: clamp(3rem, 7vw, 6.2rem);
+                font-weight: 700;
+                line-height: 0.98;
+            }
+
+            .efs-activities-cta p {
+                max-width: 530px;
+                margin: 23px 0 29px;
+                color: var(--efs-activities-muted);
+                line-height: 1.8;
+            }
+
+            @media (max-width: 760px) {
+                .efs-activities-intro,
+                .efs-complement-heading {
+                    grid-template-columns: 1fr;
+                    gap: 22px;
+                    align-items: start;
+                }
+
+                .efs-activity {
+                    grid-template-columns: 82px minmax(0, 1fr);
+                    min-height: 0;
+                    gap: 20px;
+                }
+
+                .efs-activity-number {
+                    align-self: start;
+                    padding-top: 4px;
+                    font-size: clamp(4rem, 12vw, 6rem);
+                }
+
+                .efs-activity-mark {
+                    display: none;
+                }
+
+                .efs-creation-method {
+                    grid-template-columns: repeat(3, minmax(0, 1fr));
+                    row-gap: 24px;
+                }
+
+                .efs-creation-step:nth-child(4) {
+                    padding-left: 0;
+                    border-left: 0;
+                }
+            }
+
+            @media (max-width: 520px) {
+                .efs-activities-hero {
+                    min-height: min(650px, calc(82svh - 64px));
+                }
+
+                .efs-activities-hero h1 {
+                    font-size: clamp(2.8rem, 12vw, 4.3rem);
+                }
+
+                .efs-activity {
+                    grid-template-columns: 56px minmax(0, 1fr);
+                    gap: 14px;
+                    padding: 26px 0;
+                }
+
+                .efs-activity-number {
+                    font-size: clamp(3.1rem, 14vw, 4.4rem);
+                }
+
+                .efs-activity h3 {
+                    font-size: clamp(1.3rem, 6vw, 1.8rem);
+                }
+
+                .efs-complement-strip {
+                    gap: 9px 14px;
+                }
+
+                .efs-complement-strip span + span::before {
+                    margin-right: 14px;
+                }
+
+                .efs-creation-method {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+
+                .efs-creation-step:nth-child(odd) {
+                    padding-left: 0;
+                    border-left: 0;
+                }
+
+                .efs-creation-step:nth-child(4) {
+                    padding-left: clamp(12px, 2vw, 24px);
+                    border-left: 1px solid var(--efs-activities-line);
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .efs-activity::before,
+                .efs-activity-number,
+                .efs-activity-mark {
+                    transition: none;
+                }
+            }
+        </style>
+
     </head>
 
     <body>
@@ -139,118 +506,162 @@
     </div>
 </div>
 
-        <main>
+        <main class="efs-activities-page">
 
-            <!-- Section : EXTRA FOCUS STUDIO / ACTIVITÉS -->
-            <section class="hero">
-
+            <!-- HERO -->
+            <section class="hero efs-activities-hero">
                 <div class="wrap">
-
-                    <span class="eyebrow">
-                        EXTRA FOCUS STUDIO / ACTIVITÉS
-                    </span>
-
-                    <h1>
-                        Des idées 
-                        <br>
-                        à mettre en images.
-                    </h1>
-
+                    <span class="eyebrow">EXTRA FOCUS STUDIO / FILIÈRES</span>
+                    <h1>Des idées<br>à mettre en images.</h1>
                     <p class="hero-text">
-                        Des activités complémentaires, guidées par une même envie de raconter, de créer et de faire ressentir.
+                        Extra Focus Studio est une maison de production créative qui développe plusieurs filières autour de la création, de l’image, de la narration et de la production.
                     </p>
-
                 </div>
-
             </section>
 
-            <!-- Section : NOS DOMAINES -->
+            <!-- FILIÈRES / DOMAINES D’ACTIVITÉ -->
             <section>
-
                 <div class="wrap">
-
-                    <div class="section-heading">
-
+                    <div class="efs-activities-intro">
                         <div>
-                            <span class="eyebrow">
-                                NOS DOMAINES
-                            </span>
-                            <h2>
-                                De la première idée à l'image finale.
-                            </h2>
+                            <span class="eyebrow">SIX FILIÈRES, UN MÊME STUDIO</span>
+                            <h2>Des terrains de création.</h2>
                         </div>
-
                         <p>
-                            Chaque projet est construit avec une approche adaptée à son intention, à son public et à son univers.
+                            Ces domaines appartiennent tous à Extra Focus Studio. Ils forment les différents champs d’exploration d’une même structure créative, et non des entités séparées.
                         </p>
-
                     </div>
 
-                    <div class="content-grid">
-
-                        <article class="content-card">
-                            <span>
-                                01 / CINÉMA
-                            </span>
-                            <h3>
-                                Films & audiovisuel
-                            </h3>
-                            <p>
-                                Développement de projets narratifs, courts-métrages et créations audiovisuelles.
-                            </p>
+                    <div class="efs-activities-list">
+                        <article class="efs-activity">
+                            <span class="efs-activity-number" aria-hidden="true">01</span>
+                            <div class="efs-activity-copy">
+                                <span class="efs-activity-kicker">CINÉMA</span>
+                                <h3>Cinéma</h3>
+                                <p>Développement et production de projets cinématographiques et narratifs.</p>
+                            </div>
+                            <span class="efs-activity-mark" aria-hidden="true"></span>
                         </article>
 
-                        <article class="content-card">
-                            <span>
-                                02 / IMAGE
-                            </span>
-                            <h3>
-                                Photographie
-                            </h3>
-                            <p>
-                                Portraits, images de projets et photographies pensées autour de la lumière et de l'atmosphère.
-                            </p>
+                        <article class="efs-activity">
+                            <span class="efs-activity-number" aria-hidden="true">02</span>
+                            <div class="efs-activity-copy">
+                                <span class="efs-activity-kicker">IMAGE EN MOUVEMENT</span>
+                                <h3>Audiovisuel</h3>
+                                <p>Création audiovisuelle et développement de formats adaptés aux différents projets.</p>
+                            </div>
+                            <span class="efs-activity-mark" aria-hidden="true"></span>
                         </article>
 
-                        <article class="content-card">
-                            <span>
-                                03 / UNIVERS
-                            </span>
-                            <h3>
-                                Direction artistique
-                            </h3>
-                            <p>
-                                Recherche visuelle, identité et cohérence artistique au service de chaque création.
-                            </p>
+                        <article class="efs-activity">
+                            <span class="efs-activity-number" aria-hidden="true">03</span>
+                            <div class="efs-activity-copy">
+                                <span class="efs-activity-kicker">IMAGE FIXE</span>
+                                <h3>Photographie</h3>
+                                <p>Création photographique, image, portraits, atmosphères et univers visuels.</p>
+                            </div>
+                            <span class="efs-activity-mark" aria-hidden="true"></span>
                         </article>
 
-                        <article class="content-card">
-                            <span>
-                                04 / CRÉATION
-                            </span>
-                            <h3>
-                                Projets créatifs
-                            </h3>
-                            <p>
-                                Exploration de nouveaux formats et d'idées à la croisée de l'image, de la narration et de l'expérience.
-                            </p>
+                        <article class="efs-activity">
+                            <span class="efs-activity-number" aria-hidden="true">04</span>
+                            <div class="efs-activity-copy">
+                                <span class="efs-activity-kicker">IDENTITÉ VISUELLE</span>
+                                <h3>Direction artistique</h3>
+                                <p>Construction d’identités, d’univers visuels, de cohérence artistique et recherche graphique.</p>
+                            </div>
+                            <span class="efs-activity-mark" aria-hidden="true"></span>
                         </article>
 
+                        <article class="efs-activity">
+                            <span class="efs-activity-number" aria-hidden="true">05</span>
+                            <div class="efs-activity-copy">
+                                <span class="efs-activity-kicker">CRÉATION INTERACTIVE</span>
+                                <h3>Jeux vidéo &amp; création numérique</h3>
+                                <p>Exploration de la création numérique, du jeu vidéo, de la narration interactive et de nouveaux formats.</p>
+                            </div>
+                            <span class="efs-activity-mark" aria-hidden="true"></span>
+                        </article>
+
+                        <!-- PUBLICITÉ -->
+                        <article class="efs-activity">
+                            <span class="efs-activity-number" aria-hidden="true">06</span>
+                            <div class="efs-activity-copy">
+                                <span class="efs-activity-kicker">PUBLICITÉ / COMMUNICATION DE MARQUE</span>
+                                <h3>Publicité &amp; communication de marque</h3>
+                                <p>Création audiovisuelle et artistique destinée à porter l’identité et le message d’une marque.</p>
+                            </div>
+                            <span class="efs-activity-mark" aria-hidden="true"></span>
+                        </article>
                     </div>
-
-                    <p class="status-note">
-                        <strong>
-                            À préciser :
-                        </strong>
-                         les offres, disponibilités et prestations sont à confirmer avec le studio avant toute commande.
+                    <p class="efs-activities-note">
+                        Les projets, collaborations et domaines d’intervention sont étudiés au cas par cas. Leur présentation ne constitue pas une promesse de disponibilité de chaque service.
                     </p>
-
-                    <a class="btn" href="contact.html?type=Prestation">
-                        Parler de votre projet
-                    </a>
-
                 </div>
+            </section>
 
+            <!-- COMPLÉMENTARITÉ DES FILIÈRES -->
+            <section class="efs-activities-complement">
+                <div class="wrap">
+                    <span class="eyebrow">UNE APPROCHE TRANSVERSALE</span>
+                    <div class="efs-complement-heading">
+                        <h2>Une même vision, plusieurs terrains de création.</h2>
+                        <p>
+                            Selon les projets, les domaines du studio peuvent se croiser et dialoguer. L’image, la narration, la direction artistique, la production, la photographie, le numérique et la communication s’articulent autour d’une intention commune.
+                        </p>
+                    </div>
+                    <div class="efs-complement-strip" aria-label="Domaines qui se croisent selon les projets">
+                        <span>Image</span>
+                        <span>Narration</span>
+                        <span>Direction artistique</span>
+                        <span>Production</span>
+                        <span>Photographie</span>
+                        <span>Numérique</span>
+                        <span>Communication</span>
+                    </div>
+                    <p class="efs-complement-disclaimer">
+                        Chaque projet et chaque collaboration sont étudiés au cas par cas, en fonction de leur intention et de leur contexte.
+                    </p>
+                </div>
+            </section>
+
+            <!-- NOTRE MANIÈRE DE CRÉER -->
+            <section>
+                <div class="wrap">
+                    <span class="eyebrow">NOTRE MANIÈRE DE CRÉER</span>
+                    <div class="efs-creation-method" aria-label="Les étapes de création du studio">
+                        <div class="efs-creation-step">
+                            <span>01</span>
+                            <h3>Comprendre</h3>
+                        </div>
+                        <div class="efs-creation-step">
+                            <span>02</span>
+                            <h3>Imaginer</h3>
+                        </div>
+                        <div class="efs-creation-step">
+                            <span>03</span>
+                            <h3>Construire</h3>
+                        </div>
+                        <div class="efs-creation-step">
+                            <span>04</span>
+                            <h3>Produire</h3>
+                        </div>
+                        <div class="efs-creation-step">
+                            <span>05</span>
+                            <h3>Faire vivre</h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTACT PROJET -->
+            <section class="efs-activities-cta">
+                <div class="wrap">
+                    <span class="eyebrow">UNE IDÉE À PARTAGER</span>
+                    <h2>Vous avez une idée&nbsp;?</h2>
+                    <p>Présentez votre projet au studio. Chaque proposition est étudiée selon son intention et son contexte.</p>
+                    <a class="btn fill" href="contact.html?type=Projet%20cr%C3%A9atif">Parler de votre projet ↗</a>
+                </div>
             </section>
 
         </main>
@@ -265,7 +676,7 @@
                     <span class="efs-footer-brand-mark">EXTRA FOCUS</span>
                     <span class="efs-footer-brand-name">STUDIO</span>
                 </a>
-                <p class="efs-footer-description">Studio créatif · Cinéma · Audiovisuel · Photographie · Jeux vidéo</p>
+                <p class="efs-footer-description">Studio créatif · Cinéma · Audiovisuel · Photographie · Jeux vidéo · Publicité</p>
             </section>
 
             <!-- FOOTER CONTACT -->
@@ -310,4 +721,3 @@
     </body>
 
 </html>
-

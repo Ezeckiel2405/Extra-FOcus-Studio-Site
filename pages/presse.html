@@ -18,6 +18,226 @@
 
         <link rel="stylesheet" href="../css/responsive.css">
 
+        <style>
+            /* PRESSE — présentation institutionnelle */
+            .efs-press-page {
+                --efs-press-line: rgba(255, 255, 255, 0.09);
+                --efs-press-muted: rgba(255, 255, 255, 0.62);
+            }
+
+            .efs-press-hero {
+                min-height: min(700px, calc(80svh - 76px));
+            }
+
+            .efs-press-hero .wrap,
+            .efs-press-section .wrap,
+            .efs-press-contact .wrap {
+                width: min(100%, 1160px);
+            }
+
+            .efs-press-hero h1 {
+                max-width: 10ch;
+            }
+
+            .efs-press-hero .hero-text {
+                max-width: 620px;
+            }
+
+            .efs-press-section {
+                background: transparent;
+            }
+
+            .efs-press-heading {
+                display: grid;
+                grid-template-columns: minmax(0, 0.9fr) minmax(240px, 0.65fr);
+                gap: clamp(26px, 6vw, 80px);
+                align-items: end;
+                margin-bottom: clamp(38px, 6vw, 70px);
+                padding-bottom: 28px;
+                border-bottom: 1px solid var(--efs-press-line);
+            }
+
+            .efs-press-heading h2 {
+                max-width: 13ch;
+                font-family: var(--efs-font-sans);
+                font-size: clamp(2.3rem, 4.8vw, 4.5rem);
+                font-weight: 700;
+                line-height: 1.04;
+            }
+
+            .efs-press-heading > p {
+                max-width: 430px;
+                margin: 0;
+                color: var(--efs-press-muted);
+                line-height: 1.8;
+            }
+
+            .efs-press-statement {
+                display: grid;
+                grid-template-columns: minmax(0, 1.15fr) minmax(220px, 0.85fr);
+                gap: clamp(28px, 7vw, 92px);
+                align-items: start;
+            }
+
+            .efs-press-statement > p {
+                max-width: 700px;
+                margin: 0;
+                color: var(--efs-white-soft);
+                font-size: clamp(1.15rem, 2vw, 1.55rem);
+                line-height: 1.75;
+            }
+
+            .efs-press-facts {
+                margin: 0;
+                padding: 0;
+                border-top: 1px solid var(--efs-press-line);
+            }
+
+            .efs-press-facts div {
+                display: grid;
+                grid-template-columns: minmax(105px, 0.7fr) minmax(0, 1fr);
+                gap: 14px;
+                padding: 15px 0;
+                border-bottom: 1px solid var(--efs-press-line);
+            }
+
+            .efs-press-facts dt {
+                color: var(--efs-gold);
+                font-size: 0.64rem;
+                font-weight: 500;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+            }
+
+            .efs-press-facts dd {
+                margin: 0;
+                color: var(--efs-white-soft);
+                font-size: 0.9rem;
+                line-height: 1.6;
+                overflow-wrap: anywhere;
+            }
+
+            .efs-press-resources {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: clamp(30px, 6vw, 76px);
+            }
+
+            .efs-press-resource {
+                min-width: 0;
+                padding: 22px 0 8px;
+                border-top: 1px solid var(--efs-press-line);
+            }
+
+            .efs-press-resource-index {
+                display: block;
+                margin-bottom: 28px;
+                color: var(--efs-gold);
+                font-size: 0.66rem;
+                font-weight: 500;
+                letter-spacing: 0.14em;
+            }
+
+            .efs-press-resource h3 {
+                margin: 0;
+                color: var(--efs-white);
+                font-family: var(--efs-font-sans);
+                font-size: clamp(1.35rem, 2vw, 1.8rem);
+                font-weight: 700;
+            }
+
+            .efs-press-resource p {
+                max-width: 470px;
+                margin: 12px 0 0;
+                color: var(--efs-press-muted);
+                font-size: 0.92rem;
+                line-height: 1.8;
+            }
+
+            .efs-press-empty {
+                margin-top: 20px;
+                padding: 14px 16px;
+                color: rgba(255, 255, 255, 0.74);
+                background: rgba(255, 255, 255, 0.018);
+                border-left: 1px solid var(--efs-gold-soft);
+                font-size: 0.82rem;
+                line-height: 1.7;
+            }
+
+            .efs-press-identity {
+                display: grid;
+                grid-template-columns: minmax(0, 0.85fr) minmax(250px, 1.15fr);
+                gap: clamp(30px, 7vw, 92px);
+                align-items: start;
+                padding-top: 28px;
+                border-top: 1px solid var(--efs-press-line);
+            }
+
+            .efs-press-identity-name {
+                margin: 0;
+                color: var(--efs-white);
+                font-size: clamp(1.3rem, 2.4vw, 2rem);
+                font-weight: 700;
+                line-height: 1.35;
+            }
+
+            .efs-press-identity-copy {
+                margin: 0;
+                color: var(--efs-press-muted);
+                line-height: 1.8;
+            }
+
+            .efs-press-contact {
+                background:
+                    radial-gradient(ellipse at 10% 75%, rgba(169, 0, 31, 0.04), transparent 46%),
+                    var(--efs-black);
+            }
+
+            .efs-press-contact h2 {
+                max-width: 12ch;
+                font-family: var(--efs-font-sans);
+                font-size: clamp(2.7rem, 6vw, 5.2rem);
+                font-weight: 700;
+                line-height: 1;
+            }
+
+            .efs-press-contact p {
+                max-width: 570px;
+                margin: 24px 0 28px;
+                color: var(--efs-press-muted);
+                line-height: 1.8;
+            }
+
+            @media (max-width: 760px) {
+                .efs-press-heading,
+                .efs-press-statement,
+                .efs-press-identity {
+                    grid-template-columns: 1fr;
+                    gap: 25px;
+                    align-items: start;
+                }
+            }
+
+            @media (max-width: 600px) {
+                .efs-press-hero {
+                    min-height: min(640px, calc(80svh - 64px));
+                }
+
+                .efs-press-hero h1 {
+                    font-size: clamp(2.5rem, 10vw, 4.3rem);
+                }
+
+                .efs-press-resources {
+                    grid-template-columns: 1fr;
+                    gap: 30px;
+                }
+
+                .efs-press-facts div {
+                    grid-template-columns: minmax(90px, 0.65fr) minmax(0, 1fr);
+                }
+            }
+        </style>
+
     </head>
 
     <body>
@@ -139,79 +359,106 @@
     </div>
 </div>
 
-        <main>
+        <main class="efs-press-page">
 
-            <!-- Section : EXTRA FOCUS STUDIO / PRESSE -->
-            <section class="hero">
+            <!-- HERO -->
+            <section class="hero efs-press-hero">
                 <div class="wrap">
-                    <span class="eyebrow">
-                        EXTRA FOCUS STUDIO / PRESSE
-                    </span>
-                    <h1>
-                        Ressources 
-                        <br>
-                        et informations.
-                    </h1>
+                    <span class="eyebrow">EXTRA FOCUS STUDIO / ESPACE PRESSE</span>
+                    <h1>Informations<br>officielles.</h1>
                     <p class="hero-text">
-                        Un espace de référence pour présenter le studio et faciliter les demandes des médias.
+                        Un point de contact pour les journalistes et les médias souhaitant obtenir des informations sur Extra Focus Studio et ses activités.
                     </p>
                 </div>
             </section>
 
-            <!-- Section : PRESSE & MÉDIAS -->
-            <section>
+            <!-- PRÉSENTATION OFFICIELLE -->
+            <section class="efs-press-section">
                 <div class="wrap">
-
-                    <div class="section-heading">
+                    <div class="efs-press-heading">
                         <div>
-                            <span class="eyebrow">
-                                PRESSE & MÉDIAS
-                            </span>
-                            <h2>
-                                Parlons de nos projets.
-                            </h2>
+                            <span class="eyebrow">PRÉSENTATION</span>
+                            <h2>Une maison de production créative.</h2>
+                        </div>
+                        <p>Repères essentiels sur l’identité et les domaines d’activité du studio.</p>
+                    </div>
+                    <div class="efs-press-statement">
+                        <p>
+                            Extra Focus Studio est un studio créatif et une maison de production en développement. Ses activités couvrent le cinéma, l’audiovisuel, la photographie, les jeux vidéo, la publicité et la direction artistique.
+                        </p>
+                        <dl class="efs-press-facts">
+                            <div>
+                                <dt>Nom officiel</dt>
+                                <dd>Extra Focus Studio</dd>
+                            </div>
+                            <div>
+                                <dt>Activités</dt>
+                                <dd>Cinéma · Audiovisuel · Photographie · Jeux vidéo · Publicité</dd>
+                            </div>
+                            <div>
+                                <dt>Contact</dt>
+                                <dd><a href="mailto:extrafocusstudio0@gmail.com">extrafocusstudio0@gmail.com</a></dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+            </section>
+
+            <!-- INFORMATIONS JOURNALISTES -->
+            <section class="efs-press-section">
+                <div class="wrap">
+                    <div class="efs-press-heading">
+                        <div>
+                            <span class="eyebrow">INFORMATIONS AUX MÉDIAS</span>
+                            <h2>Une demande de presse&nbsp;?</h2>
                         </div>
                         <p>
-                            Les communiqués, visuels autorisés et informations officielles seront regroupés ici.
+                            Pour une demande d’information, une question sur le studio ou une sollicitation média, contactez-nous directement.
                         </p>
                     </div>
-
-                    <div class="content-grid">
-
-                        <article class="content-card">
-                            <span>
-                                PRÉSENTATION
-                            </span>
-                            <h3>
-                                À propos du studio
-                            </h3>
-                            <p>
-                                Une présentation courte et validée d'Extra Focus Studio sera publiée dans cet espace.
-                            </p>
-                        </article>
-
-                        <article class="content-card">
-                            <span>
-                                RESSOURCES
-                            </span>
-                            <h3>
-                                Kit média
-                            </h3>
-                            <p>
-                                Les logos, photographies et documents presse pourront être proposés ici après validation des droits.
-                            </p>
-                        </article>
-
+                    <div class="efs-press-identity">
+                        <p class="efs-press-identity-name">Extra Focus Studio<br>Contact presse</p>
+                        <p class="efs-press-identity-copy">
+                            Précisez votre média, le sujet de votre demande et les informations recherchées. Les éléments de présentation et les modalités de réponse sont à échanger directement avec le studio.
+                        </p>
                     </div>
+                </div>
+            </section>
 
-                    <p class="status-note">
-                        Aucun kit média ni communiqué n'est disponible pour le moment.
-                    </p>
+            <!-- COMMUNIQUÉS DE PRESSE -->
+            <section class="efs-press-section">
+                <div class="wrap">
+                    <div class="efs-press-heading">
+                        <div>
+                            <span class="eyebrow">PUBLICATIONS OFFICIELLES</span>
+                            <h2>Communiqués de presse.</h2>
+                        </div>
+                        <p>Les communications officielles seront regroupées ici lorsqu’elles seront publiées.</p>
+                    </div>
+                    <div class="efs-press-resources">
+                        <article class="efs-press-resource">
+                            <span class="efs-press-resource-index">01 / COMMUNIQUÉS</span>
+                            <h3>Communiqués de presse</h3>
+                            <p>Aucun communiqué de presse n’a été publié pour le moment.</p>
+                            <div class="efs-press-empty">Cette rubrique sera mise à jour lors d’une publication officielle.</div>
+                        </article>
+                        <article class="efs-press-resource">
+                            <span class="efs-press-resource-index">02 / KIT MÉDIA</span>
+                            <h3>Ressources médias</h3>
+                            <p>Les ressources destinées aux médias seront proposées dans cet espace lorsqu’elles seront disponibles.</p>
+                            <div class="efs-press-empty">Aucun kit média ni fichier téléchargeable n’est disponible actuellement.</div>
+                        </article>
+                    </div>
+                </div>
+            </section>
 
-                    <a class="btn" href="contact.html?type=Presse">
-                        Contacter le studio
-                    </a>
-
+            <!-- CONTACT PRESSE -->
+            <section class="efs-press-contact">
+                <div class="wrap">
+                    <span class="eyebrow">CONTACT PRESSE</span>
+                    <h2>Entrer en contact.</h2>
+                    <p>Adressez votre demande au studio par le formulaire de contact ou par courriel.</p>
+                    <a class="btn fill" href="contact.html?type=Presse">Contacter le studio</a>
                 </div>
             </section>
 
@@ -227,7 +474,7 @@
                     <span class="efs-footer-brand-mark">EXTRA FOCUS</span>
                     <span class="efs-footer-brand-name">STUDIO</span>
                 </a>
-                <p class="efs-footer-description">Studio créatif · Cinéma · Audiovisuel · Photographie · Jeux vidéo</p>
+                <p class="efs-footer-description">Studio créatif · Cinéma · Audiovisuel · Photographie · Jeux vidéo · Publicité</p>
             </section>
 
             <!-- FOOTER CONTACT -->
@@ -272,4 +519,3 @@
     </body>
 
 </html>
-

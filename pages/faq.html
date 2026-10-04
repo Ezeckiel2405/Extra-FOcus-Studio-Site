@@ -18,6 +18,233 @@
 
         <link rel="stylesheet" href="../css/responsive.css">
 
+        <style>
+            /* FAQ — mise en page éditoriale */
+            .efs-faq-page {
+                --efs-faq-divider: rgba(255, 255, 255, 0.09);
+                --efs-faq-muted: rgba(255, 255, 255, 0.62);
+            }
+
+            .efs-faq-hero {
+                min-height: min(720px, calc(82svh - 76px));
+            }
+
+            .efs-faq-hero .wrap,
+            .efs-faq-content .wrap,
+            .efs-faq-contact .wrap {
+                width: min(100%, 1120px);
+            }
+
+            .efs-faq-hero h1 {
+                max-width: 10ch;
+            }
+
+            .efs-faq-hero .hero-text {
+                max-width: 590px;
+            }
+
+            .efs-faq-category {
+                background: transparent;
+            }
+
+            .efs-faq-category .wrap {
+                display: grid;
+                grid-template-columns: minmax(190px, 0.55fr) minmax(0, 1.45fr);
+                gap: clamp(30px, 7vw, 100px);
+                align-items: start;
+            }
+
+            .efs-faq-category-heading {
+                position: sticky;
+                top: 120px;
+            }
+
+            .efs-faq-category-heading h2 {
+                max-width: 10ch;
+                font-family: var(--efs-font-sans);
+                font-size: clamp(1.8rem, 3vw, 2.7rem);
+                font-weight: 700;
+                line-height: 1.08;
+            }
+
+            .efs-faq-category-index {
+                display: block;
+                margin-top: 20px;
+                color: var(--efs-gold);
+                font-size: 0.65rem;
+                font-weight: 500;
+                letter-spacing: 0.15em;
+            }
+
+            .efs-faq-list {
+                width: 100%;
+                margin: 0;
+                border-top: 1px solid var(--efs-faq-divider);
+            }
+
+            .efs-faq-item {
+                padding: 0;
+                background: transparent;
+                border: 0;
+                border-bottom: 1px solid var(--efs-faq-divider);
+                border-radius: 0;
+                transition: border-color 240ms ease;
+            }
+
+            .efs-faq-item[open] {
+                background: transparent;
+                border-color: rgba(200, 164, 93, 0.36);
+            }
+
+            .efs-faq-question {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 24px;
+                min-height: 76px;
+                padding: 20px 4px;
+                color: rgba(255, 255, 255, 0.82);
+                font-family: var(--efs-font-sans);
+                font-size: clamp(1rem, 1.45vw, 1.2rem);
+                font-weight: 500;
+                line-height: 1.45;
+                list-style: none;
+                cursor: pointer;
+                transition: color 220ms ease;
+            }
+
+            .efs-faq-question::-webkit-details-marker {
+                display: none;
+            }
+
+            .efs-faq-question::after {
+                flex: 0 0 auto;
+                color: var(--efs-gold);
+                content: "+";
+                font-size: 1.35rem;
+                font-weight: 400;
+                transition: transform 260ms ease;
+            }
+
+            .efs-faq-item[open] .efs-faq-question {
+                color: #fff;
+            }
+
+            .efs-faq-item[open] .efs-faq-question::after {
+                transform: rotate(45deg);
+            }
+
+            .efs-faq-question:hover {
+                color: #fff;
+            }
+
+            .efs-faq-question:focus-visible {
+                outline: 2px solid var(--efs-gold-light);
+                outline-offset: 3px;
+            }
+
+            .efs-faq-answer {
+                max-width: 650px;
+                margin: 0 36px 26px 4px;
+                padding-left: 18px;
+                color: var(--efs-faq-muted);
+                border-left: 1px solid rgba(200, 164, 93, 0.42);
+                font-size: 0.94rem;
+                line-height: 1.8;
+                animation: efs-faq-answer-in 300ms ease both;
+            }
+
+            .efs-faq-answer a {
+                color: #fff;
+                text-decoration: underline;
+                text-decoration-color: rgba(200, 164, 93, 0.55);
+                text-underline-offset: 3px;
+            }
+
+            .efs-faq-answer a:hover {
+                color: var(--efs-gold-light);
+            }
+
+            .efs-faq-contact {
+                overflow: hidden;
+                background:
+                    radial-gradient(
+                        ellipse at 10% 75%,
+                        rgba(169, 0, 31, 0.045),
+                        transparent 45%
+                    ),
+                    var(--efs-black);
+            }
+
+            .efs-faq-contact h2 {
+                max-width: 14ch;
+                font-family: var(--efs-font-sans);
+                font-size: clamp(2.4rem, 5.5vw, 5rem);
+                font-weight: 700;
+                line-height: 1.04;
+            }
+
+            .efs-faq-contact p {
+                max-width: 570px;
+                margin: 24px 0 30px;
+                color: var(--efs-faq-muted);
+                line-height: 1.8;
+            }
+
+            @keyframes efs-faq-answer-in {
+                from {
+                    opacity: 0;
+                    transform: translateY(-5px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @media (max-width: 760px) {
+                .efs-faq-category .wrap {
+                    grid-template-columns: 1fr;
+                    gap: 26px;
+                }
+
+                .efs-faq-category-heading {
+                    position: static;
+                }
+
+                .efs-faq-category-heading h2 {
+                    max-width: none;
+                }
+            }
+
+            @media (max-width: 600px) {
+                .efs-faq-hero {
+                    min-height: min(650px, calc(80svh - 64px));
+                }
+
+                .efs-faq-question {
+                    min-height: 68px;
+                    padding: 17px 2px;
+                }
+
+                .efs-faq-answer {
+                    margin-right: 8px;
+                    margin-bottom: 22px;
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .efs-faq-question::after {
+                    transition: none;
+                }
+
+                .efs-faq-answer {
+                    animation: none;
+                }
+            }
+        </style>
+
     </head>
 
     <body>
@@ -139,108 +366,178 @@
     </div>
 </div>
 
-        <main>
+        <main class="efs-faq-page">
 
-            <!-- Section : EXTRA FOCUS STUDIO / FAQ -->
-            <section class="hero">
+            <!-- HERO -->
+            <section class="hero efs-faq-hero">
                 <div class="wrap">
-                    <span class="eyebrow">
-                        EXTRA FOCUS STUDIO / FAQ
-                    </span>
-                    <h1>
-                        Vos questions, 
-                        <br>
-                        nos réponses.
-                    </h1>
+                    <span class="eyebrow">EXTRA FOCUS STUDIO / FAQ</span>
+                    <h1>Vos questions,<br>nos réponses.</h1>
                     <p class="hero-text">
-                        Quelques repères pour découvrir le studio, proposer une idée ou démarrer une conversation.
+                        Quelques repères pour découvrir le studio, ses projets et les différentes façons d’entrer en contact.
                     </p>
                 </div>
             </section>
 
-            <!-- Section : QUESTIONS FRÉQUENTES -->
-            <section>
+            <!-- LE STUDIO -->
+            <section class="efs-faq-category">
                 <div class="wrap">
-
-                    <div class="section-heading">
-                        <div>
-                            <span class="eyebrow">
-                                QUESTIONS FRÉQUENTES
-                            </span>
-                            <h2>
-                                Commençons ici.
-                            </h2>
-                        </div>
-                        <p>
-                            Vous ne trouvez pas la réponse recherchée ? Écrivez-nous directement.
-                        </p>
+                    <div class="efs-faq-category-heading">
+                        <span class="eyebrow">01 / LE STUDIO</span>
+                        <h2>Une maison créative.</h2>
+                        <span class="efs-faq-category-index">01 — 03</span>
                     </div>
-
-                    <div class="faq-list">
-
-                        <details>
-                            <summary>
-                                Que fait Extra Focus Studio ?
-                            </summary>
-                            <p>
-                                Le studio développe des projets créatifs autour du cinéma, de l'audiovisuel, de la photographie et de la direction artistique.
-                            </p>
+                    <div class="efs-faq-list">
+                        <details class="efs-faq-item">
+                            <summary class="efs-faq-question">Qu’est-ce qu’Extra Focus Studio ?</summary>
+                            <p class="efs-faq-answer">Extra Focus Studio est un studio créatif qui développe des projets autour de l’image, du cinéma et de la création.</p>
                         </details>
-
-                        <details>
-                            <summary>
-                                Comment proposer un projet ?
-                            </summary>
-                            <p>
-                                Présentez son idée, son intention, son format et son état d'avancement via la 
-                                <a href="contact.html?type=Projet%20cr%C3%A9atif">
-                                    page de contact
-                                </a>
-                                .
-                            </p>
+                        <details class="efs-faq-item">
+                            <summary class="efs-faq-question">Quelles sont les activités du studio ?</summary>
+                            <p class="efs-faq-answer">Ses activités couvrent le cinéma, l’audiovisuel, la photographie, les jeux vidéo, la publicité et la direction artistique. Retrouvez leur présentation sur la <a href="activites.html">page Activités</a>.</p>
                         </details>
-
-                        <details>
-                            <summary>
-                                Puis-je proposer une collaboration ?
-                            </summary>
-                            <p>
-                                Oui. Décrivez vos compétences, votre rôle et le projet qui vous intéresse sur la page 
-                                <a href="collaborer.html">
-                                    Collaborer
-                                </a>
-                                .
-                            </p>
+                        <details class="efs-faq-item">
+                            <summary class="efs-faq-question">Le studio produit-il ses propres projets ?</summary>
+                            <p class="efs-faq-answer">Le studio développe ses propres projets créatifs, dont le projet cinématographique <a href="projets.html">Alpha</a>.</p>
                         </details>
-
-                        <details>
-                            <summary>
-                                Le formulaire confirme-t-il une réservation ?
-                            </summary>
-                            <p>
-                                Non. Il ouvre votre messagerie pour préparer un message. Toute demande doit être échangée et confirmée directement avec le studio.
-                            </p>
-                        </details>
-
-                        <details>
-                            <summary>
-                                Comment demander une prestation ?
-                            </summary>
-                            <p>
-                                Décrivez votre besoin et les délais souhaités sur la 
-                                <a href="contact.html?type=Prestation">
-                                    page de contact
-                                </a>
-                                . Les disponibilités restent à confirmer.
-                            </p>
-                        </details>
-
                     </div>
+                </div>
+            </section>
 
-                    <a class="btn" href="contact.html">
-                        Poser une question
-                    </a>
+            <!-- PROJETS -->
+            <section class="efs-faq-category">
+                <div class="wrap">
+                    <div class="efs-faq-category-heading">
+                        <span class="eyebrow">02 / PROJETS</span>
+                        <h2>Une idée prend forme.</h2>
+                        <span class="efs-faq-category-index">04 — 06</span>
+                    </div>
+                    <div class="efs-faq-list">
+                        <details class="efs-faq-item">
+                            <summary class="efs-faq-question">Comment proposer un projet ?</summary>
+                            <p class="efs-faq-answer">Présentez son intention, son format, son état d’avancement et ce que vous recherchez via la <a href="contact.html?type=Projet%20cr%C3%A9atif">page de contact</a>.</p>
+                        </details>
+                        <details class="efs-faq-item">
+                            <summary class="efs-faq-question">Quels types de projets peuvent être proposés ?</summary>
+                            <p class="efs-faq-answer">Vous pouvez nous présenter une idée liée au cinéma, à l’audiovisuel, à la photographie, aux jeux vidéo, à la publicité ou à la création visuelle.</p>
+                        </details>
+                        <details class="efs-faq-item">
+                            <summary class="efs-faq-question">Peut-on présenter un projet encore au stade d’idée ?</summary>
+                            <p class="efs-faq-answer">Oui. Vous pouvez nous expliquer l’idée, son intention et les pistes que vous souhaitez explorer, même si le projet n’est pas encore développé.</p>
+                        </details>
+                    </div>
+                </div>
+            </section>
 
+            <!-- COLLABORATION -->
+            <section class="efs-faq-category">
+                <div class="wrap">
+                    <div class="efs-faq-category-heading">
+                        <span class="eyebrow">03 / COLLABORATION</span>
+                        <h2>Créer à plusieurs.</h2>
+                        <span class="efs-faq-category-index">07 — 09</span>
+                    </div>
+                    <div class="efs-faq-list">
+                        <details class="efs-faq-item">
+                            <summary class="efs-faq-question">Comment collaborer avec Extra Focus Studio ?</summary>
+                            <p class="efs-faq-answer">Présentez votre idée, votre rôle et la manière dont vous imaginez la collaboration sur la page <a href="collaborer.html">Collaborer avec nous</a>.</p>
+                        </details>
+                        <details class="efs-faq-item">
+                            <summary class="efs-faq-question">Quels profils peuvent rejoindre le studio ?</summary>
+                            <p class="efs-faq-answer">Le studio s’intéresse aux profils créatifs et professionnels liés à ses activités. Les domaines et modalités sont présentés sur la page <a href="rejoindre.html">Rejoindre le studio</a>.</p>
+                        </details>
+                        <details class="efs-faq-item">
+                            <summary class="efs-faq-question">Peut-on proposer une collaboration spontanée ?</summary>
+                            <p class="efs-faq-answer">Oui. Vous pouvez décrire votre approche et vos envies via la page <a href="collaborer.html">Collaborer avec nous</a> ou nous écrire depuis la <a href="contact.html?type=Collaboration">page de contact</a>.</p>
+                        </details>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PRESTATIONS -->
+            <section class="efs-faq-category">
+                <div class="wrap">
+                    <div class="efs-faq-category-heading">
+                        <span class="eyebrow">04 / PRESTATIONS</span>
+                        <h2>Un besoin précis.</h2>
+                        <span class="efs-faq-category-index">10 — 12</span>
+                    </div>
+                    <div class="efs-faq-list">
+                        <details class="efs-faq-item">
+                            <summary class="efs-faq-question">Comment demander une prestation ?</summary>
+                            <p class="efs-faq-answer">Décrivez votre besoin, le format envisagé et les informations utiles via la <a href="contact.html?type=Prestation">page de contact</a>. Les disponibilités sont à confirmer avec le studio.</p>
+                        </details>
+                        <details class="efs-faq-item">
+                            <summary class="efs-faq-question">Quels types de prestations peuvent être proposés ?</summary>
+                            <p class="efs-faq-answer">Le studio étudie les demandes en lien avec ses activités — image, audiovisuel, photographie, publicité et direction artistique — selon le projet et les disponibilités. Les modalités sont à échanger directement.</p>
+                        </details>
+                        <details class="efs-faq-item">
+                            <summary class="efs-faq-question">Comment fonctionne une première prise de contact ?</summary>
+                            <p class="efs-faq-answer">Expliquez votre besoin et son contexte dans le formulaire de <a href="contact.html?type=Prestation">contact</a>. Le formulaire prépare un message dans votre messagerie ; il vous revient de l’envoyer.</p>
+                        </details>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CANDIDATURE / REJOINDRE -->
+            <section class="efs-faq-category">
+                <div class="wrap">
+                    <div class="efs-faq-category-heading">
+                        <span class="eyebrow">05 / CANDIDATURE</span>
+                        <h2>Apporter votre regard.</h2>
+                        <span class="efs-faq-category-index">13 — 15</span>
+                    </div>
+                    <div class="efs-faq-list">
+                        <details class="efs-faq-item">
+                            <summary class="efs-faq-question">Comment rejoindre Extra Focus Studio ?</summary>
+                            <p class="efs-faq-answer">Présentez votre profil, vos compétences et vos envies via la page <a href="rejoindre.html">Rejoindre le studio</a>. Les profils sont étudiés selon les besoins des projets.</p>
+                        </details>
+                        <details class="efs-faq-item">
+                            <summary class="efs-faq-question">Faut-il avoir un portfolio ?</summary>
+                            <p class="efs-faq-answer">Un portfolio ou des liens vers des réalisations peuvent aider à présenter votre travail. Si vous n’en avez pas, expliquez simplement votre parcours et vos compétences.</p>
+                        </details>
+                        <details class="efs-faq-item">
+                            <summary class="efs-faq-question">Comment présenter son profil ?</summary>
+                            <p class="efs-faq-answer">Indiquez votre nom, votre domaine, votre expérience, vos réalisations et les projets qui vous intéressent via <a href="contact.html?type=Candidature">le formulaire de contact</a>.</p>
+                        </details>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTACT -->
+            <section class="efs-faq-category">
+                <div class="wrap">
+                    <div class="efs-faq-category-heading">
+                        <span class="eyebrow">06 / CONTACT</span>
+                        <h2>Le premier échange.</h2>
+                        <span class="efs-faq-category-index">16 — 18</span>
+                    </div>
+                    <div class="efs-faq-list">
+                        <details class="efs-faq-item">
+                            <summary class="efs-faq-question">Comment contacter le studio ?</summary>
+                            <p class="efs-faq-answer">Utilisez le <a href="contact.html">formulaire de contact</a> ou écrivez à <a href="mailto:extrafocusstudio0@gmail.com">extrafocusstudio0@gmail.com</a>.</p>
+                        </details>
+                        <details class="efs-faq-item">
+                            <summary class="efs-faq-question">Le formulaire constitue-t-il une réservation ou un engagement ?</summary>
+                            <p class="efs-faq-answer">Non. Le formulaire ouvre votre messagerie avec un message préparé. Une demande n’est ni une réservation ni un engagement ; toute suite doit être échangée et confirmée directement avec le studio.</p>
+                        </details>
+                        <details class="efs-faq-item">
+                            <summary class="efs-faq-question">Que se passe-t-il après l’envoi d’une demande ?</summary>
+                            <p class="efs-faq-answer">Après avoir envoyé le message depuis votre messagerie, votre demande peut être étudiée par le studio. Les suites éventuelles se discutent directement selon le sujet et les besoins.</p>
+                        </details>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTACT COMPLÉMENTAIRE -->
+            <section class="efs-faq-contact">
+                <div class="wrap">
+                    <span class="eyebrow">POURSUIVRE L’ÉCHANGE</span>
+                    <h2>Vous ne trouvez pas votre réponse&nbsp;?</h2>
+                    <p>
+                        Écrivez-nous quelques lignes sur votre question ou votre idée. Nous vous répondrons au mieux selon le sujet.
+                    </p>
+                    <a class="btn fill" href="contact.html">Contacter le studio</a>
                 </div>
             </section>
 
@@ -256,7 +553,7 @@
                     <span class="efs-footer-brand-mark">EXTRA FOCUS</span>
                     <span class="efs-footer-brand-name">STUDIO</span>
                 </a>
-                <p class="efs-footer-description">Studio créatif · Cinéma · Audiovisuel · Photographie · Jeux vidéo</p>
+                <p class="efs-footer-description">Studio créatif · Cinéma · Audiovisuel · Photographie · Jeux vidéo · Publicité</p>
             </section>
 
             <!-- FOOTER CONTACT -->
@@ -301,4 +598,3 @@
     </body>
 
 </html>
-

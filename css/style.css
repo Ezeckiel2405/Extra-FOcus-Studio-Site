@@ -3299,6 +3299,140 @@ main > section::before {
     }
 }
 
+@media (max-width: 380px) {
+    .efs-join-process .section-heading h2 {
+        font-size: clamp(2.2rem, 12vw, 2.7rem);
+    }
+}
+
+/* =========================================================
+   PAGE PARTENAIRES — RÉSEAU EN CONSTRUCTION
+   ========================================================= */
+
+.efs-partners-hero {
+    min-height: min(820px, calc(88svh - 76px));
+}
+
+.efs-partners-hero .wrap,
+.efs-partners-future .wrap,
+.efs-partners-contact .wrap {
+    width: min(100%, 1120px);
+}
+
+.efs-partners-hero h1 {
+    max-width: 11ch;
+}
+
+.efs-partners-hero .hero-text {
+    max-width: 590px;
+    margin-bottom: 30px;
+}
+
+.efs-partners-signature {
+    display: block;
+    width: fit-content;
+    margin-top: 30px;
+    font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+    transform: rotate(-3deg);
+}
+
+.efs-partners-future {
+    background:
+        radial-gradient(
+            ellipse at 82% 18%,
+            rgba(200, 164, 93, 0.025),
+            transparent 44%
+        ),
+        var(--efs-vantablack);
+}
+
+.efs-partners-future .section-heading {
+    margin-bottom: clamp(44px, 7vw, 86px);
+}
+
+.efs-partners-note {
+    display: grid;
+    grid-template-columns: auto minmax(32px, 1fr) minmax(0, 1.1fr);
+    align-items: center;
+    gap: clamp(16px, 3vw, 36px);
+    max-width: 960px;
+    margin-left: auto;
+    padding: clamp(20px, 3vw, 32px) 0;
+    border-top: 1px solid var(--efs-border-soft);
+    border-bottom: 1px solid var(--efs-border-soft);
+}
+
+.efs-partners-note-index {
+    color: var(--efs-gold);
+    font-size: 0.66rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+}
+
+.efs-partners-note-line {
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        var(--efs-gold-faint),
+        rgba(255, 255, 255, 0.08)
+    );
+}
+
+.efs-partners-note p {
+    margin: 0;
+    color: var(--efs-white-soft);
+    font-family: var(--efs-font-sans);
+    font-size: clamp(1rem, 1.8vw, 1.35rem);
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.efs-partners-contact {
+    overflow: hidden;
+    background:
+        radial-gradient(
+            ellipse at 8% 76%,
+            rgba(169, 0, 31, 0.045),
+            transparent 46%
+        ),
+        var(--efs-black);
+}
+
+.efs-partners-contact .eyebrow {
+    margin-bottom: 24px;
+}
+
+.efs-partners-contact h2 {
+    max-width: 12ch;
+    font-size: clamp(2.8rem, 6.4vw, 6rem);
+}
+
+.efs-partners-contact p {
+    max-width: 560px;
+    margin: 26px 0 30px;
+    color: var(--efs-white-muted);
+    line-height: 1.8;
+}
+
+@media (max-width: 600px) {
+    .efs-partners-hero {
+        min-height: min(700px, calc(82svh - 64px));
+    }
+
+    .efs-partners-note {
+        grid-template-columns: auto minmax(24px, 0.4fr) minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    .efs-partners-note p {
+        font-size: 0.95rem;
+    }
+
+    .efs-partners-contact h2 {
+        font-size: clamp(2.5rem, 12vw, 4rem);
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .efs-reveal,
     .efs-reveal-media {
@@ -3365,6 +3499,241 @@ label,
 .efs-script {
     font-family: var(--efs-font-script);
     font-weight: 400;
+}
+
+/* =========================================================
+   PAGE REJOINDRE — PARCOURS ET CANDIDATURE
+   ========================================================= */
+
+.efs-join-hero {
+    min-height: min(820px, calc(88svh - 76px));
+}
+
+.efs-join-hero .wrap {
+    width: min(100%, 1120px);
+}
+
+.efs-join-hero h1 {
+    max-width: 10ch;
+}
+
+.efs-join-hero .hero-text {
+    max-width: 620px;
+    margin-bottom: 30px;
+}
+
+.efs-join-signature {
+    display: block;
+    width: fit-content;
+    margin-top: 30px;
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    transform: rotate(-3deg);
+}
+
+.efs-join-section {
+    position: relative;
+}
+
+.efs-join-profiles {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px clamp(24px, 4vw, 56px);
+    margin-top: clamp(34px, 5vw, 58px);
+}
+
+.efs-join-profiles .content-card {
+    padding: 22px 0 10px;
+}
+
+.efs-join-profiles .content-card > span {
+    color: var(--efs-gold);
+}
+
+.efs-join-profiles .content-card h3 {
+    max-width: 14ch;
+    margin-top: 13px;
+    font-family: var(--efs-font-sans);
+    font-size: clamp(1.3rem, 1.8vw, 1.65rem);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.efs-join-profiles .content-card p {
+    margin: 14px 0 0;
+    color: var(--efs-white-muted);
+    font-size: 0.92rem;
+    line-height: 1.75;
+}
+
+.efs-join-steps {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 clamp(28px, 6vw, 86px);
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--efs-border);
+    list-style: none;
+}
+
+.efs-join-steps li {
+    display: grid;
+    grid-template-columns: 46px minmax(0, 1fr);
+    gap: 16px;
+    align-items: start;
+    min-width: 0;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--efs-border-soft);
+}
+
+.efs-join-step-number {
+    padding-top: 4px;
+    color: var(--efs-gold);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.13em;
+}
+
+.efs-join-steps h3 {
+    color: var(--efs-white);
+    font-family: var(--efs-font-sans);
+    font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.efs-join-steps p {
+    margin: 9px 0 0;
+    color: var(--efs-white-muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+.efs-join-application {
+    background:
+        radial-gradient(
+            ellipse at 12% 20%,
+            rgba(169, 0, 31, 0.065),
+            transparent 48%
+        ),
+        var(--efs-black);
+}
+
+.efs-join-application-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(40px, 9vw, 130px);
+    align-items: start;
+}
+
+.efs-join-application-heading h2 {
+    max-width: 12ch;
+    font-size: clamp(2.7rem, 5.4vw, 5.4rem);
+    line-height: 0.98;
+}
+
+.efs-join-application-heading > p {
+    max-width: 34rem;
+    margin: 26px 0 0;
+    color: var(--efs-white-muted);
+    line-height: 1.8;
+}
+
+.efs-join-application-details {
+    min-width: 0;
+    padding: clamp(22px, 3vw, 36px);
+    background:
+        linear-gradient(
+            140deg,
+            rgba(255, 255, 255, 0.035),
+            rgba(255, 255, 255, 0.008) 60%
+        ),
+        rgba(5, 5, 5, 0.72);
+    border: 1px solid var(--efs-glass-border);
+    border-radius: var(--efs-radius-md);
+    box-shadow: 0 18px 56px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(16px) saturate(112%);
+    -webkit-backdrop-filter: blur(16px) saturate(112%);
+}
+
+.efs-join-checklist {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.efs-join-checklist li {
+    position: relative;
+    padding: 14px 8px 14px 23px;
+    color: var(--efs-white-soft);
+    border-bottom: 1px solid var(--efs-border-soft);
+    font-size: 0.94rem;
+    line-height: 1.55;
+}
+
+.efs-join-checklist li::before {
+    position: absolute;
+    top: 1.48em;
+    left: 2px;
+    width: 7px;
+    height: 7px;
+    background: var(--efs-red-bright);
+    border-radius: 50%;
+    content: "";
+    box-shadow: 0 0 14px rgba(192, 0, 37, 0.28);
+}
+
+.efs-join-application-details .status-note {
+    margin: 22px 0;
+    padding: 0 0 0 14px;
+    background: none;
+    border: 0;
+    border-left: 1px solid var(--efs-gold-soft);
+    border-radius: 0;
+    color: var(--efs-white-muted);
+    font-size: 0.84rem;
+    line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+    .efs-join-profiles {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .efs-join-application-layout {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+}
+
+@media (max-width: 600px) {
+    .efs-join-hero {
+        min-height: min(720px, calc(82svh - 64px));
+    }
+
+    .efs-join-profiles,
+    .efs-join-steps {
+        grid-template-columns: 1fr;
+    }
+
+    .efs-join-profiles {
+        gap: 14px;
+    }
+
+    .efs-join-steps li {
+        padding: 21px 0;
+    }
+
+    .efs-join-application-details {
+        padding: 20px;
+        backdrop-filter: blur(12px) saturate(108%);
+        -webkit-backdrop-filter: blur(12px) saturate(108%);
+    }
+
+    .efs-join-application-details .btn {
+        width: 100%;
+        text-align: center;
+    }
 }
 
 /* Responsive — mobile */
